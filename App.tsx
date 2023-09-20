@@ -1,7 +1,8 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
+ *npm start -- --reset-cache
+
  * @format
  */
 
