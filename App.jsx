@@ -1,11 +1,10 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 
-import NewUserPage from './components/NewUserPage';
-import HomePage from './components/HomePage';
+import StartPage from './components/StartPage';
 
 function App() {
-  return <HomePage />;
+  return <StartPage />;
 }
 
 export default App;
