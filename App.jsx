@@ -1,10 +1,14 @@
 import React from 'react';
-import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
 
-import StartPage from './components/StartPage';
+import MyStack from './navigation/MyStack';
 
 function App() {
-  return <StartPage />;
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
 }
 
 export default App;

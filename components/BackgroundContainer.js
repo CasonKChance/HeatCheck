@@ -10,12 +10,11 @@ const BackgroundContainer = ({children}) => {
             source={require('../assets/images/stripes.png')}
             resizeMode="stretch"
             style={styles.image}
-            imageStyle={styles.image_imageStyle}>
-            <View style={styles.rect3} />
-          </ImageBackground>
-          {children}
+            imageStyle={styles.image_imageStyle}
+          />
         </View>
       </View>
+      {children}
     </View>
   );
 };
@@ -54,5 +53,9 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     marginTop: 420,
     marginLeft: 98,
+  },
+  imageStack: {
+    width: 375,
+    height: 812,
   },
 });

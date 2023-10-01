@@ -1,13 +1,16 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import BackgroundContainer from './BackgroundContainer';
+import {StyleSheet, Text} from 'react-native';
+import BackgroundContainer from '../../components/BackgroundContainer';
+import LoginButton from '../../components/LoginButton';
+import GetStartedButton from '../../components/GetStartedButton';
 
-const StartPage = () => {
+const StartScreen = ({navigation}) => {
   return (
     <BackgroundContainer>
       <Text style={styles.heatCheck}>Heat Check</Text>
       <Text style={styles.turnUpTheHeat}>Turn Up The Heat</Text>
-      <View style={styles.rect2} />
+      <GetStartedButton onPress={() => navigation.navigate('Registration')} />
+      <LoginButton />
     </BackgroundContainer>
   );
 };
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
     top: 128,
     left: 64,
     position: 'absolute',
-    fontFamily: 'bakbak-one-regular',
+    fontFamily: 'BakbakOne-Regular',
     color: 'rgba(239,35,60,1)',
     fontSize: 48,
   },
@@ -24,7 +27,7 @@ const styles = StyleSheet.create({
     top: 224,
     left: 106,
     position: 'absolute',
-    fontFamily: 'bakbak-one-regular',
+    fontFamily: 'BakbakOne-Regular',
     color: 'rgba(237,242,244,1)',
     fontSize: 20,
   },
@@ -45,10 +48,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 20,
   },
-  imageStack: {
-    width: 375,
-    height: 812,
-  },
 });
 
-export default StartPage;
+export default StartScreen;

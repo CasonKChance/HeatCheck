@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button} from 'react-native-ui-lib/';
 
-const HomePage = () => {
+const HomeScreen = () => {
   return <Button />;
 };
 
-export default HomePage;
+export default HomeScreen;
