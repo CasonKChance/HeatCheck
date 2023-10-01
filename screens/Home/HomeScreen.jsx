@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button} from 'react-native-ui-lib/';
+import BackgroundWrapperContainer from '../../components/BackgroundWrapperContainer';
 
 const HomeScreen = () => {
-  return <Button />;
+  return <BackgroundWrapperContainer />;
 };
 
 export default HomeScreen;

@@ -1,8 +1,16 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import BakbakOneFont from '../assets/fonts/BakbakOne-Regular.ttf';
 
 const customFont = {fontFamily: 'BakbakOne-Regular', src: BakbakOneFont};
+
+const {width, height} = Dimensions.get('window');
 
 const GetStartedButton = ({onPress}) => {
   return (
@@ -17,10 +25,12 @@ const GetStartedButton = ({onPress}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {alignItems: 'center', justifyContent: 'center'},
+  container: {
+    alignItems: 'center',
+  },
   rect3: {
-    width: 180,
-    height: 40,
+    width: width / 2,
+    height: height / 20,
     backgroundColor: 'rgba(237,242,244,1)',
     borderRadius: 40,
     shadowColor: 'rgba(43,45,66,1)',
@@ -31,15 +41,14 @@ const styles = StyleSheet.create({
     elevation: 60,
     shadowOpacity: 1,
     shadowRadius: 20,
-    marginTop: 325,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   getStarted: {
     src: BakbakOneFont,
     fontFamily: 'BakbakOne-Regular',
     color: 'rgba(43,45,66,1)',
     fontSize: 20,
-    marginTop: 6,
-    marginLeft: 36,
   },
 });
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {TextInput, Button, StyleSheet} from 'react-native';
-import BackgroundContainer from '../../components/BackgroundContainer';
+import BackgroundWrapperContainer from '../../components/BackgroundWrapperContainer';
 
 const RegistrationScreen = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const RegistrationScreen = () => {
   };
 
   return (
-    <BackgroundContainer>
+    <BackgroundWrapperContainer>
       <TextInput
         style={styles.input}
         placeholder="Name"
@@ -107,7 +107,7 @@ const RegistrationScreen = () => {
         onChangeText={text => handleChange('weight', text)}
       />
       <Button title="Register" onPress={handleRegistration} />
-    </BackgroundContainer>
+    </BackgroundWrapperContainer>
   );
 };
 

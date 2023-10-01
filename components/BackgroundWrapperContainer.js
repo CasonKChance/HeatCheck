@@ -1,7 +1,9 @@
-import {StyleSheet, View, ImageBackground} from 'react-native';
+import {StyleSheet, View, ImageBackground, Dimensions} from 'react-native';
 import React from 'react';
 
-const BackgroundContainer = ({children}) => {
+const {width, height} = Dimensions.get('window');
+
+const BackgroundWrapperContainer = ({children}) => {
   return (
     <View>
       <View style={styles.rect}>
@@ -19,7 +21,7 @@ const BackgroundContainer = ({children}) => {
   );
 };
 
-export default BackgroundContainer;
+export default BackgroundWrapperContainer;
 
 const styles = StyleSheet.create({
   container: {
@@ -38,24 +40,8 @@ const styles = StyleSheet.create({
   image_imageStyle: {
     opacity: 0.2,
   },
-  rect3: {
-    width: 180,
-    height: 40,
-    backgroundColor: 'rgba(43,45,66,1)',
-    borderRadius: 40,
-    shadowColor: 'rgba(43,45,66,1)',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    elevation: 60,
-    shadowOpacity: 1,
-    shadowRadius: 20,
-    marginTop: 420,
-    marginLeft: 98,
-  },
   imageStack: {
-    width: 375,
-    height: 812,
+    width: width,
+    height: height,
   },
 });
