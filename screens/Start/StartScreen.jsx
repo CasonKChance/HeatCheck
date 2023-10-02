@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
-import BackgroundWrapperContainer from '../../components/BackgroundWrapperContainer';
-import LoginButton from '../../components/LoginButton';
-import GetStartedButton from '../../components/GetStartedButton';
+import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
+import LoginButton from '../../components/buttons/LoginButton';
+import GetStartedButton from '../../components/buttons/GetStartedButton';
 
 const {height} = Dimensions.get('window');
 

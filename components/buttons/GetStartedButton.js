@@ -6,9 +6,6 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import BakbakOneFont from '../assets/fonts/BakbakOne-Regular.ttf';
-
-const customFont = {fontFamily: 'BakbakOne-Regular', src: BakbakOneFont};
 
 const {width, height} = Dimensions.get('window');
 
@@ -17,7 +14,7 @@ const GetStartedButton = ({onPress}) => {
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container]}>
         <View style={styles.rect3}>
-          <Text style={[styles.getStarted, customFont]}>Get Started</Text>
+          <Text style={styles.getStarted}>Get Started</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -45,7 +42,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   getStarted: {
-    src: BakbakOneFont,
     fontFamily: 'BakbakOne-Regular',
     color: 'rgba(43,45,66,1)',
     fontSize: 20,

@@ -9,7 +9,7 @@ const BackgroundWrapperContainer = ({children}) => {
       <View style={styles.rect}>
         <View style={styles.imageStack}>
           <ImageBackground
-            source={require('../assets/images/stripes.png')}
+            source={require('../../assets/images/stripes.png')}
             resizeMode="stretch"
             style={styles.image}
             imageStyle={styles.image_imageStyle}

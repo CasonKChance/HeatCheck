@@ -5,6 +5,7 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import StartScreen from '../screens/Start/StartScreen';
 import RegistrationScreen from '../screens/Registration/RegistrationScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
+import BackgroundWrapperContainer from '../components/wrappers/BackgroundWrapperContainer';
 
 const Stack = createStackNavigator();
 

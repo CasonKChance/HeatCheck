@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {TextInput, Button, StyleSheet} from 'react-native';
-import BackgroundWrapperContainer from '../../components/BackgroundWrapperContainer';
+import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 
 const RegistrationScreen = () => {
   const [formData, setFormData] = useState({

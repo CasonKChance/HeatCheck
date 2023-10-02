@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgroundWrapperContainer from '../../components/BackgroundWrapperContainer';
+import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 
 const HomeScreen = () => {
   return <BackgroundWrapperContainer />;

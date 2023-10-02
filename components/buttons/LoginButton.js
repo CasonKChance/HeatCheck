@@ -6,16 +6,14 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import BakbakOneFont from '../assets/fonts/BakbakOne-Regular.ttf';
 
-const customFont = {fontFamily: 'BakbakOne-Regular', src: BakbakOneFont};
 const {width, height} = Dimensions.get('window');
 const LoginButton = ({onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container]}>
         <View style={styles.rect3}>
-          <Text style={[styles.login, customFont]}>Login</Text>
+          <Text style={styles.login}>Login</Text>
         </View>
       </View>
     </TouchableOpacity>
