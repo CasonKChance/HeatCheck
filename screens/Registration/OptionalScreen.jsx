@@ -2,65 +2,9 @@ import React, {useState} from 'react';
 import {TextInput, Button, StyleSheet} from 'react-native';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 
-const RegistrationScreen = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    username: '',
-    password: '',
-    email: '',
-    phoneNumber: '',
-    age: '',
-    hometown: '',
-    skillLevel: '',
-    playType: '',
-    position: '',
-    height: '',
-    weight: '',
-  });
-
-  const handleChange = (field, value) => {
-    setFormData({...formData, [field]: value});
-  };
-
-  const handleRegistration = () => {
-    // Handle registration logic here
-  };
-
+const OptionalScreen = ({navigation}) => {
   return (
     <BackgroundWrapperContainer>
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={formData.name}
-        onChangeText={text => handleChange('name', text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        value={formData.username}
-        onChangeText={text => handleChange('username', text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={formData.password}
-        onChangeText={text => handleChange('password', text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        keyboardType="email-address"
-        value={formData.email}
-        onChangeText={text => handleChange('email', text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Phone Number"
-        keyboardType="numeric"
-        value={formData.phoneNumber}
-        onChangeText={text => handleChange('phoneNumber', text)}
-      />
       <TextInput
         style={styles.input}
         placeholder="Age"
@@ -106,11 +50,10 @@ const RegistrationScreen = () => {
         value={formData.weight}
         onChangeText={text => handleChange('weight', text)}
       />
-      <Button title="Register" onPress={handleRegistration} />
+      <Button title="Next" onPress={() => navigation.navigate('Optional')} />
     </BackgroundWrapperContainer>
   );
 };
-
 const styles = StyleSheet.create({
   input: {
     height: 40,
@@ -121,5 +64,4 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
 });
-
-export default RegistrationScreen;
+export default OptionalScreen;

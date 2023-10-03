@@ -5,7 +5,7 @@ const {width, height} = Dimensions.get('window');
 
 const BackgroundWrapperContainer = ({children}) => {
   return (
-    <View>
+    <View sytle={styles.container}>
       <View style={styles.rect}>
         <View style={styles.imageStack}>
           <ImageBackground
