@@ -12,7 +12,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		406381927482427CB1C57E56 /* stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BA0E50FC5C4A7E8E20E8CA /* stripes.png */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */; };
 		C60577A27A5B917A47C11B8A /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */; };
 /* End PBXBuildFile section */
 
@@ -36,12 +38,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HeatCheck/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HeatCheck/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HeatCheck/main.m; sourceTree = "<group>"; };
+		14BA0E50FC5C4A7E8E20E8CA /* stripes.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = stripes.png; path = ../assets/images/stripes.png; sourceTree = "<group>"; };
 		569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck-HeatCheckTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAF37AB19B48EBBF1FEC969 /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HeatCheck/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA5AF335D2026575E37493D9 /* libPods-HeatCheck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2DDF05060550605E5A85D7 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC7C8082AAC77394EAF8E2AA /* Pods-HeatCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.release.xcconfig"; sourceTree = "<group>"; };
+		B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BakbakOne-Regular.ttf"; path = "../assets/fonts/BakbakOne-Regular.ttf"; sourceTree = "<group>"; };
 		BB9F21DF63791CD6C6BF171B /* Pods-HeatCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -122,6 +126,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				ACD919131E624170A2ECCFDE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +140,16 @@
 				00E356EE1AD99517003FC87E /* HeatCheckTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ACD919131E624170A2ECCFDE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */,
+				14BA0E50FC5C4A7E8E20E8CA /* stripes.png */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -244,6 +259,8 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */,
+				406381927482427CB1C57E56 /* stripes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

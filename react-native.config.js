@@ -3,5 +3,8 @@ module.exports = {
     ios: {},
     android: {}, // grouped into "project"
   },
-  assets: ['./assets/fonts/', './assets/images/'], // stays the same
+  assets: ['./assets/fonts/', './assets/images/', './assets/'], // stays the same
+  resolver: {
+    assetExts: ['ttf', 'png', 'jpg', 'jpeg', 'svg'],
+  },
 };
