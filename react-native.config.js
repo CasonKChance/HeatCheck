@@ -4,4 +4,7 @@ module.exports = {
     android: {}, // grouped into "project"
   },
   assets: ['./assets/fonts/', './assets/images/'], // stays the same
+  resolver: {
+    assetExts: ['ttf', 'png', 'jpg', 'jpeg', 'svg']
+  }
 };
