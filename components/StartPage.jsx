@@ -11,6 +11,7 @@ const StartPage = () => {
     </BackgroundContainer>
   );
 };
+
 const styles = StyleSheet.create({
   heatCheck: {
     top: 128,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     left: 106,
     position: 'absolute',
     fontFamily: 'bakbak-one-regular',
-    color: 'rgba(237,242,244,1)',
+    color: 'rgba(50,50,50,1)',
     fontSize: 20,
   },
   rect2: {
