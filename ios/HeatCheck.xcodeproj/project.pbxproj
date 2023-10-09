@@ -17,6 +17,9 @@
 		A55595755A71441BA677D893 /* BakbakOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E699B9DBFFD743BAB0EAAA87 /* BakbakOne-Regular.ttf */; };
 		B82B4041AF9A46F891149CA4 /* stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FED68781A664498BA597D4D /* stripes.png */; };
 		C60577A27A5B917A47C11B8A /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */; };
+		B513CA49C3F6475DAE15938A /* Amiko-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A955993519F74142B9041B27 /* Amiko-Bold.ttf */; };
+		98F9BD3E02704134816FBE39 /* Amiko-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87C4FAF3EDBA4F1489D6C21B /* Amiko-Regular.ttf */; };
+		9358043616BC47068ADAD412 /* Amiko-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EDCE2A40443478C9E9EB3D9 /* Amiko-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		BB9F21DF63791CD6C6BF171B /* Pods-HeatCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		E699B9DBFFD743BAB0EAAA87 /* BakbakOne-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BakbakOne-Regular.ttf"; path = "../assets/fonts/BakbakOne-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A955993519F74142B9041B27 /* Amiko-Bold.ttf */ = {isa = PBXFileReference; name = "Amiko-Bold.ttf"; path = "../assets/fonts/Amiko-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		87C4FAF3EDBA4F1489D6C21B /* Amiko-Regular.ttf */ = {isa = PBXFileReference; name = "Amiko-Regular.ttf"; path = "../assets/fonts/Amiko-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7EDCE2A40443478C9E9EB3D9 /* Amiko-SemiBold.ttf */ = {isa = PBXFileReference; name = "Amiko-SemiBold.ttf"; path = "../assets/fonts/Amiko-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,9 @@
 				E699B9DBFFD743BAB0EAAA87 /* BakbakOne-Regular.ttf */,
 				56B95F41BDA647E9B0FCA8E2 /* Graduate-Regular.ttf */,
 				1FED68781A664498BA597D4D /* stripes.png */,
+				A955993519F74142B9041B27 /* Amiko-Bold.ttf */,
+				87C4FAF3EDBA4F1489D6C21B /* Amiko-Regular.ttf */,
+				7EDCE2A40443478C9E9EB3D9 /* Amiko-SemiBold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -265,6 +274,9 @@
 				A55595755A71441BA677D893 /* BakbakOne-Regular.ttf in Resources */,
 				975AD56A2A2C4AE9B0941006 /* Graduate-Regular.ttf in Resources */,
 				B82B4041AF9A46F891149CA4 /* stripes.png in Resources */,
+				B513CA49C3F6475DAE15938A /* Amiko-Bold.ttf in Resources */,
+				98F9BD3E02704134816FBE39 /* Amiko-Regular.ttf in Resources */,
+				9358043616BC47068ADAD412 /* Amiko-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   },
   //parent controls
   tEXTLAYER: {
+    paddingTop: 30,
     width: 390,
     height: 100,
     marginTop: 50,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   //Heatcheck heading
   heatCheck: {
     fontSize: 57,
-    fontFamily: '',
+    fontFamily: 'Graduate-Regular',
     color: "rgba(194,1,20,1)",
     textAlign: "center",
     lineHeight: 75
@@ -49,50 +50,53 @@ const styles = StyleSheet.create({
     top: 0,
     left: 1,
     position: "absolute",
-    fontFamily: "",
+    fontFamily: "EuphemiaUCAS",
+    fontWeight: '700',
     color: "rgba(0,0,0,1)",
-    fontSize: 28
+    fontSize: 24
   },
   //orange subtext
   turnUpTheHeatB: {
     top: 0,
     left: 0,
     position: "absolute",
-    fontFamily: "anybody-700italic",
+    fontFamily: "EuphemiaUCAS-BOLD",
     color: "rgba(255,167,55,1)",
-    fontSize: 28
+    fontSize: 24
   },
   //both layers of subtext
   turnUpTheHeatOStack: {
     width: 262,
-    height: 29
+    height: 29,
   },
   bUTTONS: {
-    width: 293,
-    height: 64,
+    width: 280,
+    height: 85,
     marginTop: 175,
     justifyContent: 'center',
     alignItems: 'center',
   },
   rEGISTER: {
-    height: 64,
-    width: 293,
+    height: 55,
+    width: 270,
     backgroundColor: "rgba(194,1,20,1)",
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 15
+    marginBottom: 45
   },
   lOGIN: {
-    height: 64,
-    width: 293,
+    height: 55,
+    width: 270,
     borderRadius: 50,
     backgroundColor: "rgba(39,45,45,1)",
     justifyContent: 'center',
     alignItems: 'center'
   },
   buttonText: {
-    color: "rgba(255,255,255,1)"
+    color: "rgba(255,255,255,1)",
+    fontSize: 22,
+    fontFamily: 'arial',
   }
 });
 

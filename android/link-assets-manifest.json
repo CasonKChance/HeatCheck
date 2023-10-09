@@ -2,6 +2,18 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Amiko-Bold.ttf",
+      "sha1": "45a6b9a6466ecf37aca8fbfee75d5bf77b4d4625"
+    },
+    {
+      "path": "assets/fonts/Amiko-Regular.ttf",
+      "sha1": "a6b68c1ee39fd06373fa4f38215729dc41d45cc4"
+    },
+    {
+      "path": "assets/fonts/Amiko-SemiBold.ttf",
+      "sha1": "21178bd7d0378bd4e291a96c3d774efeecafc65c"
+    },
+    {
       "path": "assets/fonts/BakbakOne-Regular.ttf",
       "sha1": "e7d3d32f7058aa37df132df235f8e336d964f667"
     },
