@@ -111,7 +111,8 @@ const LoginScreen = ({navigation}) => {
               }}>
               New to the app?
             </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Required')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Registration')}>
               <Text style={{color: 'rgba(239,35,60,1)', fontWeight: '700'}}>
                 {' '}
                 Register

@@ -223,7 +223,7 @@ const RequiredScreen = ({navigation}) => {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Login');
+                navigation.navigate('');
               }}>
               <Text style={{color: 'rgba(239,35,60,1)', fontWeight: '700'}}>
                 {' '}
