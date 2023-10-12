@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   rect3: {
-    width: width / 2,
-    height: height / 20,
-    backgroundColor: 'rgba(43,45,66,1)',
+    width: width / 1.35,
+    height: height / 12.5,
+    backgroundColor: "rgba(39,45,45,1)",
     borderRadius: 40,
     shadowColor: 'rgba(43,45,66,1)',
     shadowOffset: {
@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
     elevation: 60,
     shadowOpacity: 1,
     shadowRadius: 20,
-    top: height / 6,
+    top: height / 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   login: {
     fontFamily: 'BakbakOne-Regular',
-    color: 'rgba(237,242,244,1)',
+    color: "rgba(255,255,255,1)",
     fontSize: 20,
   },
 });
