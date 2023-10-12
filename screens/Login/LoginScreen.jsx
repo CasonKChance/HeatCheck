@@ -25,7 +25,7 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.header}>Login</Text>
           <View style={styles.inputContainer}>
             <MaterialIcons
-              name="alternate-email"
+              // name="alternate-email"
               size={20}
               style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
             />

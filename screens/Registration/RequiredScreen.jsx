@@ -79,7 +79,7 @@ const RequiredScreen = ({navigation}) => {
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView>
-        <View style={{paddingHorizontal: 25}}>
+        <View style={styles.container}>
           {/* <View style={{alignItems: 'center'}}>
             <LogoPNG height={300} width={300} />
           </View> */}
@@ -223,7 +223,7 @@ const RequiredScreen = ({navigation}) => {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('');
+                navigation.navigate('Login');
               }}>
               <Text style={{color: 'rgba(239,35,60,1)', fontWeight: '700'}}>
                 {' '}
@@ -238,6 +238,7 @@ const RequiredScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {paddingHorizontal: 25},
   header: {
     fontFamily: 'BakbakOne-Regular',
     fontSize: 28,
