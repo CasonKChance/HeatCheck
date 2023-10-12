@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -9,10 +8,11 @@ import {
   Text,
   TextInput,
   SafeAreaView,
+  StyleSheet,
 } from 'react-native';
-import GoogleSVG from '../../assets/images/google.svg';
-import FacebookSVG from '../../assets/images/facebook.svg';
-import TwitterSVG from '../../assets/images/twitter.svg';
+// import GoogleSVG from '../../assets/images/google.svg';
+// import FacebookSVG from '../../assets/images/facebook.svg';
+// import TwitterSVG from '../../assets/images/twitter.svg';
 
 const LoginScreen = ({navigation}) => {
   return (
@@ -22,22 +22,8 @@ const LoginScreen = ({navigation}) => {
           {/* <View style={{alignItems: 'center'}}>
             <LogoPNG height={300} width={300} />
           </View> */}
-          <Text
-            style={{
-              fontFamily: 'BakbakOne-Regular',
-              fontSize: 28,
-              fontWeight: '500',
-              marginBottom: 30,
-            }}>
-            Login
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              borderBottomWidth: 2,
-              paddingBottom: 8,
-              marginBottom: 25,
-            }}>
+          <Text style={styles.header}>Login</Text>
+          <View style={styles.inputContainer}>
             <MaterialIcons
               name="alternate-email"
               size={20}
@@ -45,22 +31,11 @@ const LoginScreen = ({navigation}) => {
             />
             <TextInput
               placeholder="Email Address"
-              style={{
-                fontFamily: 'BakbakOne-Regular',
-                flex: 1,
-                paddingVertical: 0,
-                color: 'rgba(43,45,66,1)',
-              }}
+              style={styles.emailField}
               keyboardType="email-address"
             />
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              borderBottomWidth: 2,
-              paddingBottom: 8,
-              marginBottom: 25,
-            }}>
+          <View style={styles.inputContainer}>
             <Ionicons
               name="ios-lock-closed-outline"
               size={20}
@@ -69,57 +44,24 @@ const LoginScreen = ({navigation}) => {
             <TextInput
               placeholder="Password"
               secureTextEntry={true}
-              style={{
-                fontFamily: 'BakbakOne-Regular',
-                flex: 1,
-                paddingVertical: 0,
-              }}
+              style={styles.passwordField}
             />
             <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
               }}>
-              <Text
-                style={{
-                  color: 'rgba(239,35,60,1)',
-                  fontFamily: 'BakbakOne-Regular',
-                  fontWeight: '700',
-                }}>
-                Forgot?
-              </Text>
+              <Text style={styles.forgot}>Forgot?</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity
-            style={{
-              backgroundColor: 'rgba(239,35,60,1)',
-              padding: 20,
-              borderRadius: 10,
-              marginBottom: 30,
-            }}
+            style={styles.loginButton}
             onPress={() => {
               navigation.goBack();
             }}>
-            <Text
-              style={{
-                fontFamily: 'BakbakOne-Regular',
-                textAlign: 'center',
-                fontWeight: '700',
-                color: 'rgba(237,242,244,1)',
-                fontSize: 16,
-              }}>
-              Login
-            </Text>
+            <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
-          <Text
-            style={{
-              fontFamily: 'BakbakOne-Regular',
-              textAlign: 'center',
-              color: 'rgba(43,45,66,1)',
-              marginBottom: 30,
-            }}>
-            Or, login with ...
-          </Text>
+          <Text style={styles.otherLoginText}>Or, login with ...</Text>
           {/* <View
             style={{
               flexDirection: 'row',
@@ -160,13 +102,13 @@ const LoginScreen = ({navigation}) => {
               <TwitterSVG height={24} width={24} />
             </TouchableOpacity>
           </View> */}
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginBottom: 30,
-            }}>
-            <Text style={{color: 'rgba(43, 45, 66, 1)', fontWeight: '700'}}>
+          <View style={styles.newUserContainer}>
+            <Text
+              style={{
+                color: 'rgba(43, 45, 66, 1)',
+                fontWeight: '700',
+                fontFamily: 'BakbakOne-Regular',
+              }}>
               New to the app?
             </Text>
             <TouchableOpacity
@@ -182,5 +124,62 @@ const LoginScreen = ({navigation}) => {
     </BackgroundWrapperContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    fontFamily: 'BakbakOne-Regular',
+    fontSize: 28,
+    fontWeight: '500',
+    marginBottom: 30,
+    color: 'rgba(43,45,66,1)',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    borderBottomWidth: 2,
+    paddingBottom: 8,
+    marginBottom: 25,
+    color: 'rgba(43, 45, 66, 1)',
+  },
+  emailField: {
+    fontFamily: 'BakbakOne-Regular',
+    flex: 1,
+    paddingVertical: 0,
+    color: 'rgba(43,45,66,1)',
+  },
+  passwordField: {
+    fontFamily: 'BakbakOne-Regular',
+    flex: 1,
+    paddingVertical: 0,
+  },
+  forgot: {
+    color: 'rgba(239,35,60,1)',
+    fontFamily: 'BakbakOne-Regular',
+    fontWeight: '700',
+  },
+  loginButton: {
+    backgroundColor: 'rgba(239,35,60,1)',
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 30,
+  },
+  loginButtonText: {
+    fontFamily: 'BakbakOne-Regular',
+    textAlign: 'center',
+    fontWeight: '700',
+    color: 'rgba(237,242,244,1)',
+    fontSize: 16,
+  },
+  otherLoginText: {
+    fontFamily: 'BakbakOne-Regular',
+    textAlign: 'center',
+    color: 'rgba(43,45,66,1)',
+    marginBottom: 30,
+  },
+  newUserContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 30,
+  },
+});
 
 export default LoginScreen;
