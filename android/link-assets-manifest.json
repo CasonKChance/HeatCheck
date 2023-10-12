@@ -6,8 +6,32 @@
       "sha1": "e7d3d32f7058aa37df132df235f8e336d964f667"
     },
     {
+      "path": "assets/fonts/BebasNeue-Regular.ttf",
+      "sha1": "8b3aaeb978f3cb5f575860774b50c332338563c1"
+    },
+    {
+      "path": "assets/fonts/Graduate-Regular.ttf",
+      "sha1": "88e865b6510bad31f6fe4fe28d73bbef3435ce46"
+    },
+    {
+      "path": "assets/images/facebook.svg",
+      "sha1": "033447f30cdb7c58a345c197b04889288b2c7ae9"
+    },
+    {
+      "path": "assets/images/flaming-basketbal.png",
+      "sha1": "1214d50cdf2613f689f40edb037479e2e314f3c9"
+    },
+    {
+      "path": "assets/images/google.svg",
+      "sha1": "046b32605384cf010d87e8ac57462c12514cab5e"
+    },
+    {
       "path": "assets/images/stripes.png",
       "sha1": "75340ebf4772d625f04a5a7b4e30ad0c1ea1065d"
+    },
+    {
+      "path": "assets/images/twitter.svg",
+      "sha1": "3897b8724c1450f9882470c44ce7bce46db09292"
     }
   ]
 }
