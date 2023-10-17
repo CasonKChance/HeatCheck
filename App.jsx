@@ -3,11 +3,11 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import MyStack from './navigation/MyStack';
 
+import FlippableCard from './components/wrappers/FlippableCard';
+
 function App() {
   return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
+    <FlippableCard frontContent={"FRONT"} backContent={"BACK"}></FlippableCard>
   );
 }
 
