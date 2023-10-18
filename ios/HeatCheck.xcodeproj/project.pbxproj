@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* HeatCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HeatCheckTests.m */; };
-		119F00CD6B0692AF10D53501 /* libPods-HeatCheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5AF335D2026575E37493D9 /* libPods-HeatCheck.a */; };
+		0A008839416B27AD7C352069 /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1211CDD204ECD90FC3940A35 /* libPods-HeatCheck-HeatCheckTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		406381927482427CB1C57E56 /* stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BA0E50FC5C4A7E8E20E8CA /* stripes.png */; };
+		73A09DABBE30FEC92F76C739 /* libPods-HeatCheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C236593380B15AC41270A206 /* libPods-HeatCheck.a */; };
+		77E33A130B854DFAB824C3EE /* twitter.svg in Resources */ = {isa = PBXBuildFile; fileRef = F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */; };
-		C60577A27A5B917A47C11B8A /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */; };
-		EA9B76AADE76422F9AF544D0 /* Graduate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */; };
-		A35DE3BE488F4C1BB7483A30 /* facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = FB7026CB1C614583B8B75B7C /* facebook.svg */; };
-		F35F5C55CB654A64877BE735 /* flaming-basketbal.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B79FA83C884D608ED0B636 /* flaming-basketbal.png */; };
-		CCA48184B92846F3BA5B31FA /* google.svg in Resources */ = {isa = PBXBuildFile; fileRef = E4D75426A02744748D728D10 /* google.svg */; };
-		77E33A130B854DFAB824C3EE /* twitter.svg in Resources */ = {isa = PBXBuildFile; fileRef = F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */; };
 		9D9321D02EE249A2B9FA2C62 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */; };
+		A35DE3BE488F4C1BB7483A30 /* facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = FB7026CB1C614583B8B75B7C /* facebook.svg */; };
+		CCA48184B92846F3BA5B31FA /* google.svg in Resources */ = {isa = PBXBuildFile; fileRef = E4D75426A02744748D728D10 /* google.svg */; };
+		EA9B76AADE76422F9AF544D0 /* Graduate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */; };
+		F35F5C55CB654A64877BE735 /* flaming-basketbal.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B79FA83C884D608ED0B636 /* flaming-basketbal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,28 +38,28 @@
 		00E356EE1AD99517003FC87E /* HeatCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeatCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* HeatCheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeatCheckTests.m; sourceTree = "<group>"; };
+		1211CDD204ECD90FC3940A35 /* libPods-HeatCheck-HeatCheckTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck-HeatCheckTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* HeatCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeatCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HeatCheck/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = HeatCheck/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HeatCheck/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HeatCheck/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HeatCheck/main.m; sourceTree = "<group>"; };
+		13B79FA83C884D608ED0B636 /* flaming-basketbal.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "flaming-basketbal.png"; path = "../assets/images/flaming-basketbal.png"; sourceTree = "<group>"; };
 		14BA0E50FC5C4A7E8E20E8CA /* stripes.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = stripes.png; path = ../assets/images/stripes.png; sourceTree = "<group>"; };
-		569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck-HeatCheckTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CAF37AB19B48EBBF1FEC969 /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
+		17EDFC76421010AA1CA620F3 /* Pods-HeatCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.debug.xcconfig"; sourceTree = "<group>"; };
+		2943379E913B3D7D4D3D221A /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Graduate-Regular.ttf"; path = "../assets/fonts/Graduate-Regular.ttf"; sourceTree = "<group>"; };
+		68CBE077DD2715F57F2CCA88 /* Pods-HeatCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.release.xcconfig"; sourceTree = "<group>"; };
+		7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BebasNeue-Regular.ttf"; path = "../assets/fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HeatCheck/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AA5AF335D2026575E37493D9 /* libPods-HeatCheck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB2DDF05060550605E5A85D7 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.release.xcconfig"; sourceTree = "<group>"; };
-		AC7C8082AAC77394EAF8E2AA /* Pods-HeatCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.release.xcconfig"; sourceTree = "<group>"; };
 		B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BakbakOne-Regular.ttf"; path = "../assets/fonts/BakbakOne-Regular.ttf"; sourceTree = "<group>"; };
-		BB9F21DF63791CD6C6BF171B /* Pods-HeatCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.debug.xcconfig"; sourceTree = "<group>"; };
+		C236593380B15AC41270A206 /* libPods-HeatCheck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4D75426A02744748D728D10 /* google.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = google.svg; path = ../assets/images/google.svg; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */ = {isa = PBXFileReference; name = "Graduate-Regular.ttf"; path = "../assets/fonts/Graduate-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		FB7026CB1C614583B8B75B7C /* facebook.svg */ = {isa = PBXFileReference; name = "facebook.svg"; path = "../assets/images/facebook.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		13B79FA83C884D608ED0B636 /* flaming-basketbal.png */ = {isa = PBXFileReference; name = "flaming-basketbal.png"; path = "../assets/images/flaming-basketbal.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E4D75426A02744748D728D10 /* google.svg */ = {isa = PBXFileReference; name = "google.svg"; path = "../assets/images/google.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */ = {isa = PBXFileReference; name = "twitter.svg"; path = "../assets/images/twitter.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; name = "BebasNeue-Regular.ttf"; path = "../assets/fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = twitter.svg; path = ../assets/images/twitter.svg; sourceTree = "<group>"; };
+		F55A8C354B7B1B7223EEB964 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.release.xcconfig"; sourceTree = "<group>"; };
+		FB7026CB1C614583B8B75B7C /* facebook.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = facebook.svg; path = ../assets/images/facebook.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C60577A27A5B917A47C11B8A /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */,
+				0A008839416B27AD7C352069 /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				119F00CD6B0692AF10D53501 /* libPods-HeatCheck.a in Frameworks */,
+				73A09DABBE30FEC92F76C739 /* libPods-HeatCheck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				AA5AF335D2026575E37493D9 /* libPods-HeatCheck.a */,
-				569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */,
+				C236593380B15AC41270A206 /* libPods-HeatCheck.a */,
+				1211CDD204ECD90FC3940A35 /* libPods-HeatCheck-HeatCheckTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,10 +173,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB9F21DF63791CD6C6BF171B /* Pods-HeatCheck.debug.xcconfig */,
-				AC7C8082AAC77394EAF8E2AA /* Pods-HeatCheck.release.xcconfig */,
-				6CAF37AB19B48EBBF1FEC969 /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */,
-				AB2DDF05060550605E5A85D7 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */,
+				17EDFC76421010AA1CA620F3 /* Pods-HeatCheck.debug.xcconfig */,
+				68CBE077DD2715F57F2CCA88 /* Pods-HeatCheck.release.xcconfig */,
+				2943379E913B3D7D4D3D221A /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */,
+				F55A8C354B7B1B7223EEB964 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -188,12 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HeatCheckTests" */;
 			buildPhases = (
-				C9F0E3253D760D672F5E24E1 /* [CP] Check Pods Manifest.lock */,
+				49BBE8C071486BE05D330FBD /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				AC6B8A64835877B5E7AE068C /* [CP] Embed Pods Frameworks */,
-				20C3B6BBADE82662934797B4 /* [CP] Copy Pods Resources */,
+				928E5C2EEDD25A3B2653ADBE /* [CP] Embed Pods Frameworks */,
+				3211FC792A157E1AC1C880C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,14 +209,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HeatCheck" */;
 			buildPhases = (
-				D87914D215BDD8C60673622C /* [CP] Check Pods Manifest.lock */,
+				9E86A9851793C48ED41B1359 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E0C9564830A7FA5DCB80B0C2 /* [CP] Embed Pods Frameworks */,
-				01DCCBD72D87A528AA171F69 /* [CP] Copy Pods Resources */,
+				087DD06A99C58198F838831B /* [CP] Embed Pods Frameworks */,
+				952E7429FCD0939EBA8B5BDE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -307,24 +307,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		01DCCBD72D87A528AA171F69 /* [CP] Copy Pods Resources */ = {
+		087DD06A99C58198F838831B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		20C3B6BBADE82662934797B4 /* [CP] Copy Pods Resources */ = {
+		3211FC792A157E1AC1C880C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,24 +341,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC6B8A64835877B5E7AE068C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C9F0E3253D760D672F5E24E1 /* [CP] Check Pods Manifest.lock */ = {
+		49BBE8C071486BE05D330FBD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,7 +363,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D87914D215BDD8C60673622C /* [CP] Check Pods Manifest.lock */ = {
+		928E5C2EEDD25A3B2653ADBE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		952E7429FCD0939EBA8B5BDE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E86A9851793C48ED41B1359 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -400,23 +417,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E0C9564830A7FA5DCB80B0C2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeatCheck/Pods-HeatCheck-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -471,7 +471,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CAF37AB19B48EBBF1FEC969 /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */;
+			baseConfigurationReference = 2943379E913B3D7D4D3D221A /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -498,7 +498,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB2DDF05060550605E5A85D7 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */;
+			baseConfigurationReference = F55A8C354B7B1B7223EEB964 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -522,7 +522,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB9F21DF63791CD6C6BF171B /* Pods-HeatCheck.debug.xcconfig */;
+			baseConfigurationReference = 17EDFC76421010AA1CA620F3 /* Pods-HeatCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -549,7 +549,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC7C8082AAC77394EAF8E2AA /* Pods-HeatCheck.release.xcconfig */;
+			baseConfigurationReference = 68CBE077DD2715F57F2CCA88 /* Pods-HeatCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import {
   StyleSheet,
-  View,
   Text,
   TouchableOpacity,
   Animated,
@@ -39,6 +38,7 @@ const FlippableCard = ({ frontContent, backContent }) => {
         }),
       },
     ],
+    backfaceVisibility: 'hidden',
   };
 
   const backAnimatedStyle = {
@@ -46,35 +46,26 @@ const FlippableCard = ({ frontContent, backContent }) => {
       {
         rotateY: flipAnim.interpolate({
           inputRange: [0, 1],
-          outputRange: ['180deg', '360deg'],
+          outputRange: ['-180deg', '0deg'],
         }),
       },
     ],
+    backfaceVisibility: 'hidden',
   };
 
-
-  if (!isFlipped) {
-    return(
-      <TouchableOpacity activeOpacity={1} onPress={flipCard} style={styles.card}>
-          <Animated.View style={[styles.cardInner, frontAnimatedStyle]}>
-            <View style={styles.cardFront}>
-              <Text>{frontContent}</Text>
-            </View>
-          </Animated.View>
-      </TouchableOpacity>
-    );
-  } else {
-    return(
-      <TouchableOpacity activeOpacity={1} onPress={flipCard} style={styles.card}>
-        <Animated.View style={[styles.cardInner, backAnimatedStyle]}>
-          <View style={styles.cardBack}>
-            <Text>{backContent}</Text>
-          </View>
+  return (
+    <TouchableOpacity activeOpacity={1} onPress={flipCard} style={styles.card}>
+      <Animated.View style={styles.cardInner}>
+        <Animated.View style={[styles.cardFront, frontAnimatedStyle]}>
+          <Text>{frontContent}</Text>
         </Animated.View>
-      </TouchableOpacity>
-    );
-  }
-}
+        <Animated.View style={[styles.cardBack, backAnimatedStyle]}>
+          <Text>{backContent}</Text>
+        </Animated.View>
+      </Animated.View>
+    </TouchableOpacity>
+  );
+};
 
 export default FlippableCard;
 
