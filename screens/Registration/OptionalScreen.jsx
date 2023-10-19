@@ -22,7 +22,7 @@ const OptionalScreen = ({navigation, route}) => {
 
   const skillLevelOptions = [
     {label: 'Professional / Division 1', value: '90-99'},
-    {label: 'Division 2 / Division 3', value: '80-89'},
+    {label: 'Collegiate', value: '80-89'},
     {label: 'Varsity', value: '70-79'},
     {label: 'Junior Varsity', value: '60-69'},
     {label: 'Casual', value: '50-59'},
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
-    marginTop: 30,
+    marginTop: 20,
   },
   inputContainer: {
     flexDirection: 'row',

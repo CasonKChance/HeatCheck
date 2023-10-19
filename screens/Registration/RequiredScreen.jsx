@@ -9,6 +9,7 @@ import {
   TextInput,
   SafeAreaView,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 
 const RequiredScreen = ({navigation}) => {
@@ -89,7 +90,7 @@ const RequiredScreen = ({navigation}) => {
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView>
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <Text style={styles.header}>Register</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text>Back</Text>
@@ -142,7 +143,7 @@ const RequiredScreen = ({navigation}) => {
               <Text style={styles.loginLinkText}>Login</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </BackgroundWrapperContainer>
   );
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
-    marginTop: 30,
+    marginTop: 20,
   },
   inputContainer: {
     flexDirection: 'row',
