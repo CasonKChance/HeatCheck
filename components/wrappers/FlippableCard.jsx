@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
+import FlippableCardButton from '../buttons/FlippableCardButton';
 
 const FlippableCard = ({ frontContent, backContent }) => {
   const flipAnim = useRef(new Animated.Value(0)).current;
@@ -60,7 +61,8 @@ const FlippableCard = ({ frontContent, backContent }) => {
           <Text>{frontContent}</Text>
         </Animated.View>
         <Animated.View style={[styles.cardBack, backAnimatedStyle]}>
-          <Text>{backContent}</Text>
+          <Text style={styles.backText}>{backContent}</Text>
+          { isFlipped ? <FlippableCardButton /> : null }
         </Animated.View>
       </Animated.View>
     </TouchableOpacity>
@@ -71,8 +73,8 @@ export default FlippableCard;
 
 const styles = StyleSheet.create({
   card: {
-    width: 150,
-    height: 200,
+    width: 125,
+    height: 125,
     borderWidth: 1,
     borderColor: '#ccc',
     margin: 10,
@@ -99,9 +101,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#ddd',
-    justifyContent: 'center',
+    justifyContent: 'space-between',  // Align content to the top of the card
     alignItems: 'center',
-    //backfaceVisibility: 'hidden',
+    padding: 10,  // Add some padding to give a little space from the top
     transform: [{ rotateY: '180deg' }],
+  },
+  backText: {
+    fontSize: 11,
+    fontWeight: 'bold',
   },
 });
