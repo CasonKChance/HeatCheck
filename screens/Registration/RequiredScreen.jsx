@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   TouchableOpacity,
   View,
@@ -92,8 +91,8 @@ const RequiredScreen = ({navigation}) => {
       <SafeAreaView>
         <ScrollView style={styles.container}>
           <Text style={styles.header}>Register</Text>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text>Back</Text>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <Text style={styles.backButtonText}>Back</Text>
           </TouchableOpacity>
           {renderInputWithIcon('First Name', 'firstName', handleInputChange)}
           {renderInputWithIcon('Last Name', 'lastName', handleInputChange)}
@@ -159,15 +158,35 @@ const renderInputWithIcon = (
 ) => {
   return (
     <View style={styles.inputContainer}>
-      {fieldName === 'emailAddress' ? (
-        <MaterialIcons name="alternate-email" size={20} style={styles.icon} />
-      ) : (
-        <Ionicons
-          name="ios-lock-closed-outline"
-          size={20}
-          style={styles.icon}
-        />
-      )}
+      {
+        (() => {
+          switch (fieldName) {
+            case 'emailAddress':
+              return (
+                <Icon name="envelope" size={20} color="#000000" style={{ marginRight: "2.5%" }} />
+              );
+            case 'password':
+              return (
+                <Icon name="lock" size={20} style={styles.icon} />
+              );
+            case 'firstName':
+              return (
+                <Icon name="user" size={20} color="#000000" style={{ marginRight: "2.5%" }} />
+              )
+              case 'lastName':
+                return (
+                  <Icon name="user" size={20} color="#000000" style={{ marginRight: "2.5%" }} />
+                )
+                case 'confirmPassword':
+                  return (
+                    <Icon name="lock" size={20} color="#000000" style={{ marginRight: "2.5%" }} />
+                  )
+            // Add more cases for other field names if needed
+            default:
+              return null; // Or any default icon you want to use
+          }
+        })()
+      }
       <TextInput
         placeholder={placeholder}
         style={styles.inputField}
@@ -189,13 +208,15 @@ const styles = StyleSheet.create({
     fontFamily: 'BakbakOne-Regular',
     fontSize: 28,
     fontWeight: '500',
-    marginBottom: 30,
+    marginBottom: 15,
     color: 'rgba(43,45,66,1)',
     marginTop: 20,
   },
   inputContainer: {
     flexDirection: 'row',
     borderBottomWidth: 2,
+    paddingTop: 0,
+    marginTop: 5,
     paddingBottom: 8,
     marginBottom: 25,
     color: 'rgba(43, 45, 66, 1)',
@@ -205,6 +226,7 @@ const styles = StyleSheet.create({
     color: 'rgba(43,45,66,1)',
   },
   inputField: {
+    marginTop: 0,
     fontFamily: 'BakbakOne-Regular',
     flex: 1,
     paddingVertical: 0,
@@ -217,6 +239,8 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     backgroundColor: 'rgba(239,35,60,1)',
+    borderWidth: 2,
+    borderColor: 'rgba(90,90,90)',
     padding: 20,
     borderRadius: 10,
     marginBottom: 30,
@@ -227,6 +251,24 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
     fontSize: 16,
+  },
+  backButton: {
+    borderRadius:10,
+    marginTop: -52,
+    marginBottom: 25,
+    marginLeft: 270,
+    borderWidth: 2, // Add border width
+    width: 55,
+    backgroundColor: 'gray',
+    borderColor: ' gray', // Add border color
+    padding: 5, // Add padding if desired
+  },
+  backButtonText: {
+    fontFamily: 'BakbakOne-Regular',
+    textAlign: 'center',
+    fontWeight: '700',
+    color: 'rgba(237,242,244,1)',
+    fontSize: 16,  
   },
   otherRegisterText: {
     fontFamily: 'BakbakOne-Regular',

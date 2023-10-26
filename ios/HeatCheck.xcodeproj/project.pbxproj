@@ -17,10 +17,9 @@
 		77E33A130B854DFAB824C3EE /* twitter.svg in Resources */ = {isa = PBXBuildFile; fileRef = F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */; };
+		93B5A6DF2AE1B348009CA90D /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 93B5A6DE2AE1B348009CA90D /* fonts */; };
 		9D9321D02EE249A2B9FA2C62 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */; };
 		A35DE3BE488F4C1BB7483A30 /* facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = FB7026CB1C614583B8B75B7C /* facebook.svg */; };
-
-		C60577A27A5B917A47C11B8A /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */; };
 		CCA48184B92846F3BA5B31FA /* google.svg in Resources */ = {isa = PBXBuildFile; fileRef = E4D75426A02744748D728D10 /* google.svg */; };
 		EA9B76AADE76422F9AF544D0 /* Graduate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */; };
 		F35F5C55CB654A64877BE735 /* flaming-basketbal.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B79FA83C884D608ED0B636 /* flaming-basketbal.png */; };
@@ -47,21 +46,22 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HeatCheck/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HeatCheck/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HeatCheck/main.m; sourceTree = "<group>"; };
-		13B79FA83C884D608ED0B636 /* flaming-basketbal.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "flaming-basketbal.png"; path = "../assets/images/flaming-basketbal.png"; sourceTree = "<group>"; };
-		14BA0E50FC5C4A7E8E20E8CA /* stripes.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = stripes.png; path = ../assets/images/stripes.png; sourceTree = "<group>"; };
+		13B79FA83C884D608ED0B636 /* flaming-basketbal.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "flaming-basketbal.png"; path = "../assets/images/flaming-basketbal.png"; sourceTree = "<group>"; };
+		14BA0E50FC5C4A7E8E20E8CA /* stripes.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = stripes.png; path = ../assets/images/stripes.png; sourceTree = "<group>"; };
 		17EDFC76421010AA1CA620F3 /* Pods-HeatCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		2943379E913B3D7D4D3D221A /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Graduate-Regular.ttf"; path = "../assets/fonts/Graduate-Regular.ttf"; sourceTree = "<group>"; };
+		3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Graduate-Regular.ttf"; path = "../assets/fonts/Graduate-Regular.ttf"; sourceTree = "<group>"; };
 		68CBE077DD2715F57F2CCA88 /* Pods-HeatCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.release.xcconfig"; sourceTree = "<group>"; };
-		7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BebasNeue-Regular.ttf"; path = "../assets/fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BebasNeue-Regular.ttf"; path = "../assets/fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HeatCheck/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BakbakOne-Regular.ttf"; path = "../assets/fonts/BakbakOne-Regular.ttf"; sourceTree = "<group>"; };
+		93B5A6DE2AE1B348009CA90D /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BakbakOne-Regular.ttf"; path = "../assets/fonts/BakbakOne-Regular.ttf"; sourceTree = "<group>"; };
 		C236593380B15AC41270A206 /* libPods-HeatCheck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4D75426A02744748D728D10 /* google.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = google.svg; path = ../assets/images/google.svg; sourceTree = "<group>"; };
+		E4D75426A02744748D728D10 /* google.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = google.svg; path = ../assets/images/google.svg; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = twitter.svg; path = ../assets/images/twitter.svg; sourceTree = "<group>"; };
+		F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = twitter.svg; path = ../assets/images/twitter.svg; sourceTree = "<group>"; };
 		F55A8C354B7B1B7223EEB964 /* Pods-HeatCheck-HeatCheckTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.release.xcconfig"; sourceTree = "<group>"; };
-		FB7026CB1C614583B8B75B7C /* facebook.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = facebook.svg; path = ../assets/images/facebook.svg; sourceTree = "<group>"; };
+		FB7026CB1C614583B8B75B7C /* facebook.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = facebook.svg; path = ../assets/images/facebook.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +134,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				93B5A6DE2AE1B348009CA90D /* fonts */,
 				13B07FAE1A68108700A75B9A /* HeatCheck */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* HeatCheckTests */,
@@ -169,7 +170,6 @@
 				7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -277,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B5A6DF2AE1B348009CA90D /* fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */,
