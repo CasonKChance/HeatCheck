@@ -19,8 +19,6 @@
 		90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */; };
 		9D9321D02EE249A2B9FA2C62 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */; };
 		A35DE3BE488F4C1BB7483A30 /* facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = FB7026CB1C614583B8B75B7C /* facebook.svg */; };
-
-		C60577A27A5B917A47C11B8A /* libPods-HeatCheck-HeatCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 569402E5F359588CE4EAB460 /* libPods-HeatCheck-HeatCheckTests.a */; };
 		CCA48184B92846F3BA5B31FA /* google.svg in Resources */ = {isa = PBXBuildFile; fileRef = E4D75426A02744748D728D10 /* google.svg */; };
 		EA9B76AADE76422F9AF544D0 /* Graduate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */; };
 		F35F5C55CB654A64877BE735 /* flaming-basketbal.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B79FA83C884D608ED0B636 /* flaming-basketbal.png */; };
