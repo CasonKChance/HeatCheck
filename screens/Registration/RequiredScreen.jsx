@@ -9,8 +9,10 @@ import {
   TextInput,
   SafeAreaView,
   StyleSheet,
-  ScrollView,
 } from 'react-native';
+// import GoogleSVG from '../../assets/images/google.svg';
+// import FacebookSVG from '../../assets/images/facebook.svg';
+// import TwitterSVG from '../../assets/images/twitter.svg';
 
 const RequiredScreen = ({navigation}) => {
   const [userData, setUserData] = useState({
@@ -28,27 +30,22 @@ const RequiredScreen = ({navigation}) => {
     // Check if all required fields are filled out
     const {firstName, lastName, emailAddress, password, confirmPassword} =
       userData;
-
     const allFieldsFilled =
       firstName && lastName && emailAddress && password && confirmPassword;
-
     const isPasswordMatch = password === confirmPassword;
-
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
-
     const isPasswordValid =
-      password.length >= 8 &&
-      /[A-Z]/.test(password) &&
-      /[a-z]/.test(password) &&
-      /\d/.test(password) &&
-      /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      password.length >= 8 && // Minimum length
+      /[A-Z]/.test(password) && // Contains uppercase letters
+      /[a-z]/.test(password) && // Contains lowercase letters
+      /\d/.test(password) && // Contains at least one digit
+      /[!@#$%^&*(),.?":{}|<>]/.test(password); // Contains at least one special character
 
     setPasswordError(
       !isPasswordValid
         ? 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.'
         : '',
     );
-
     // Update the state to enable/disable the Continue button
     setIsEnabled(
       allFieldsFilled && isPasswordMatch && isEmailValid && isPasswordValid,
@@ -79,119 +76,174 @@ const RequiredScreen = ({navigation}) => {
     );
   };
 
-  const handleContinue = () => {
-    if (!isEnabled) {
-      setPasswordError('Please fix the errors before continuing.'); // Show a general error message
-    } else {
-      navigation.navigate('Optional', {userData});
-    }
-  };
-
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView>
-        <ScrollView style={styles.container}>
+        <View style={{paddingHorizontal: 25}}>
+          {/* <View style={{alignItems: 'center'}}>
+            <LogoPNG height={300} width={300} />
+          </View> */}
           <Text style={styles.header}>Register</Text>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text>Back</Text>
-          </TouchableOpacity>
-          {renderInputWithIcon('First Name', 'firstName', handleInputChange)}
-          {renderInputWithIcon('Last Name', 'lastName', handleInputChange)}
-          {renderInputWithIcon(
-            'Email Address',
-            'emailAddress',
-            handleInputChange,
-            'email-address',
-            'none',
-          )}
-          {renderInputWithIcon(
-            'Password',
-            'password',
-            handleInputChange,
-            'default',
-            'password',
-            handlePasswordBlur,
-          )}
+          <View style={styles.inputContainer}>
+            {/* <MaterialIcons
+              name="alternate-email"
+              size={20}
+              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
+            /> */}
+            <TextInput
+              placeholder="First Name"
+              style={styles.emailField}
+              onChangeText={text => handleInputChange('firstName', text)}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            {/* <MaterialIcons
+              name="alternate-email"
+              size={20}
+              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
+            /> */}
+            <TextInput
+              placeholder="Last Name"
+              style={styles.emailField}
+              onChangeText={text => handleInputChange('lastName', text)}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <MaterialIcons
+              name="alternate-email"
+              size={20}
+              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
+            />
+            <TextInput
+              placeholder="Email Address"
+              style={styles.emailField}
+              keyboardType="email-address"
+              onChangeText={text => handleInputChange('emailAddress', text)}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Ionicons
+              name="ios-lock-closed-outline"
+              size={20}
+              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
+            />
+            <TextInput
+              placeholder="Password"
+              secureTextEntry={true}
+              style={styles.passwordField}
+              onChangeText={text => {
+                handleInputChange('password', text);
+              }}
+              onBlur={handlePasswordBlur}
+            />
+          </View>
           {passwordError !== '' && (
             <Text style={styles.errorText}>{passwordError}</Text>
           )}
-          {renderInputWithIcon(
-            'Confirm Password',
-            'confirmPassword',
-            handleInputChange,
-            'default',
-            'password',
-          )}
+          <View style={styles.inputContainer}>
+            <Ionicons
+              name="ios-lock-closed-outline"
+              size={20}
+              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
+            />
+            <TextInput
+              placeholder="Confirm Password"
+              secureTextEntry={true}
+              style={styles.passwordField}
+              onChangeText={text => handleInputChange('confirmPassword', text)}
+            />
+          </View>
+
           <TouchableOpacity
             style={[
-              styles.continueButton,
+              styles.loginButton,
               {
                 backgroundColor: isEnabled ? 'rgba(239,35,60,1)' : 'gray',
               },
             ]}
-            onPress={handleContinue}
+            onPress={() => {
+              if (!isEnabled) {
+                setPasswordError('Please fix the errors before continuing.'); // Show a general error message
+              } else {
+                navigation.navigate('Optional', {userData});
+              }
+            }}
             disabled={!isEnabled}>
-            <Text style={styles.continueButtonText}>Continue</Text>
+            <Text style={styles.loginButtonText}>Continue</Text>
           </TouchableOpacity>
-          <Text style={styles.otherRegisterText}>Or, register with ...</Text>
+          <Text style={styles.otherLoginText}>Or, register with ...</Text>
+          {/* <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginBottom: 30,
+            }}>
+            <TouchableOpacity
+              onPress={() => {}}
+              style={{
+                borderColor: '#ddd',
+                borderWidth: 2,
+                borderRadius: 10,
+                paddingHorizontal: 30,
+                paddingVertical: 10,
+              }}>
+              <GoogleSVG height={24} width={24} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {}}
+              style={{
+                borderColor: '#ddd',
+                borderWidth: 2,
+                borderRadius: 10,
+                paddingHorizontal: 30,
+                paddingVertical: 10,
+              }}>
+              <FacebookSVG height={24} width={24} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {}}
+              style={{
+                borderColor: '#ddd',
+                borderWidth: 2,
+                borderRadius: 10,
+                paddingHorizontal: 30,
+                paddingVertical: 10,
+              }}>
+              <TwitterSVG height={24} width={24} />
+            </TouchableOpacity>
+          </View> */}
           <View style={styles.newUserContainer}>
-            <Text style={styles.newUserText}>Already registered?</Text>
+            <Text
+              style={{
+                color: 'rgba(43, 45, 66, 1)',
+                fontWeight: '700',
+                fontFamily: 'BakbakOne-Regular',
+              }}>
+              Already registered?
+            </Text>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Login');
+                navigation.navigate('');
               }}>
-              <Text style={styles.loginLinkText}>Login</Text>
+              <Text style={{color: 'rgba(239,35,60,1)', fontWeight: '700'}}>
+                {' '}
+                Login
+              </Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       </SafeAreaView>
     </BackgroundWrapperContainer>
   );
 };
 
-const renderInputWithIcon = (
-  placeholder,
-  fieldName,
-  handleInputChange,
-  keyboardType = 'default',
-  secureTextEntry = 'none',
-  onBlur = null,
-) => {
-  return (
-    <View style={styles.inputContainer}>
-      {fieldName === 'emailAddress' ? (
-        <MaterialIcons name="alternate-email" size={20} style={styles.icon} />
-      ) : (
-        <Ionicons
-          name="ios-lock-closed-outline"
-          size={20}
-          style={styles.icon}
-        />
-      )}
-      <TextInput
-        placeholder={placeholder}
-        style={styles.inputField}
-        keyboardType={keyboardType}
-        autoCapitalize="none"
-        onChangeText={text => handleInputChange(fieldName, text)}
-        secureTextEntry={secureTextEntry === 'password'}
-        onBlur={onBlur}
-      />
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 25,
-  },
   header: {
     fontFamily: 'BakbakOne-Regular',
     fontSize: 28,
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
-    marginTop: 20,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -200,35 +252,36 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     color: 'rgba(43, 45, 66, 1)',
   },
-  icon: {
-    marginRight: 5,
-    color: 'rgba(43,45,66,1)',
-  },
-  inputField: {
+  emailField: {
     fontFamily: 'BakbakOne-Regular',
     flex: 1,
     paddingVertical: 0,
     color: 'rgba(43,45,66,1)',
   },
-  errorText: {
+  passwordField: {
     fontFamily: 'BakbakOne-Regular',
-    color: 'red',
-    marginBottom: 10,
+    flex: 1,
+    paddingVertical: 0,
   },
-  continueButton: {
+  forgot: {
+    color: 'rgba(239,35,60,1)',
+    fontFamily: 'BakbakOne-Regular',
+    fontWeight: '700',
+  },
+  loginButton: {
     backgroundColor: 'rgba(239,35,60,1)',
     padding: 20,
     borderRadius: 10,
     marginBottom: 30,
   },
-  continueButtonText: {
+  loginButtonText: {
     fontFamily: 'BakbakOne-Regular',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
     fontSize: 16,
   },
-  otherRegisterText: {
+  otherLoginText: {
     fontFamily: 'BakbakOne-Regular',
     textAlign: 'center',
     color: 'rgba(43,45,66,1)',
@@ -238,15 +291,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 30,
-  },
-  newUserText: {
-    color: 'rgba(43, 45, 66, 1)',
-    fontWeight: '700',
-    fontFamily: 'BakbakOne-Regular',
-  },
-  loginLinkText: {
-    color: 'rgba(239,35,60,1)',
-    fontWeight: '700',
   },
 });
 
