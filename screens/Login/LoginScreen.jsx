@@ -2,6 +2,7 @@ import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   TouchableOpacity,
   View,
@@ -10,6 +11,8 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
+import { Center } from 'native-base';
+import { forVerticalIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
 // import GoogleSVG from '../../assets/images/google.svg';
 // import FacebookSVG from '../../assets/images/facebook.svg';
 // import TwitterSVG from '../../assets/images/twitter.svg';
@@ -24,11 +27,7 @@ const LoginScreen = ({navigation}) => {
           </View> */}
           <Text style={styles.header}>Login</Text>
           <View style={styles.inputContainer}>
-            <MaterialIcons
-              name="alternate-email"
-              size={20}
-              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
-            />
+          <Icon name="envelope" size={20} color="#000000" style={{ marginRight: "2.5%" }} />
             <TextInput
               placeholder="Email Address"
               style={styles.emailField}
@@ -36,11 +35,7 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.inputContainer}>
-            <Ionicons
-              name="ios-lock-closed-outline"
-              size={20}
-              style={{marginRight: 5, color: 'rgba(43,45,66,1)'}}
-            />
+          <Icon name="lock" size={30} color="#000000" style={{ marginRight: "2.5%" }} />
             <TextInput
               placeholder="Password"
               secureTextEntry={true}
@@ -107,13 +102,19 @@ const LoginScreen = ({navigation}) => {
               style={{
                 color: 'rgba(43, 45, 66, 1)',
                 fontWeight: '700',
+                fontSize: 20,
                 fontFamily: 'BakbakOne-Regular',
               }}>
               New to the app?
             </Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('Registration')}>
-              <Text style={{color: 'rgba(239,35,60,1)', fontWeight: '700'}}>
+              <Text style={{
+                color: 'rgba(239,35,60,1)',
+                 fontWeight: '700',
+                  fontSize: 18,
+                  fontFamily: 'BakbakOne-Regular',
+                  }}>
                 {' '}
                 Register
               </Text>
@@ -127,8 +128,9 @@ const LoginScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   header: {
+    marginTop: 20,
     fontFamily: 'BakbakOne-Regular',
-    fontSize: 28,
+    fontSize: 35,
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
@@ -137,8 +139,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 2,
     paddingBottom: 8,
-    marginBottom: 25,
+    marginBottom: 30,
     color: 'rgba(43, 45, 66, 1)',
+    paddingBottom: 5,
   },
   emailField: {
     fontFamily: 'BakbakOne-Regular',
@@ -150,35 +153,39 @@ const styles = StyleSheet.create({
     fontFamily: 'BakbakOne-Regular',
     flex: 1,
     paddingVertical: 0,
+    marginBottom: 0,
   },
   forgot: {
     color: 'rgba(239,35,60,1)',
     fontFamily: 'BakbakOne-Regular',
-    fontWeight: '700',
+    fontSize: 15,
   },
   loginButton: {
     backgroundColor: 'rgba(239,35,60,1)',
     padding: 20,
     borderRadius: 10,
-    marginBottom: 30,
+    marginBottom: 25,
   },
   loginButtonText: {
     fontFamily: 'BakbakOne-Regular',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
-    fontSize: 16,
+    fontSize: 20,
   },
   otherLoginText: {
+    marginTop: 10,
     fontFamily: 'BakbakOne-Regular',
     textAlign: 'center',
     color: 'rgba(43,45,66,1)',
-    marginBottom: 30,
+    fontSize: 20,
+    marginBottom: 15,
   },
   newUserContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 30,
+    alignItems: 'center',
   },
 });
 
