@@ -2,16 +2,18 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 /**Example of userInfo to pass in:
-const dummy = {
-    name: 'Charlie',
+  const dummy = {
+    name: 'Lebron',
     skillRating: 99,
-    position: 'Wing',
-    height: '6ft 3in',
-    weight: '185 lbs',
-    playType: 'Playmaking Sharpshooter',
-    age: 20,
-    profileImage: { uri: 'stripes' }
-};
+    position: 'Point Forward',
+    height: '6ft 9in',
+    weight: '250 lbs',
+    playType: 'Slashing Playmaker',
+    age: '38',
+    profileImage: require('./assets/images/lebron.jpeg'),
+    rank: '1',
+    gamesPlayed: '100',
+  };
  */
 const PlayerProfileScreen = ({userInfo}) => {
   const { name, skillRating, position, height, weight, playType, age, profileImage } = userInfo;

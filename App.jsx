@@ -3,11 +3,12 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import MyStack from './navigation/MyStack';
 
+import LeaderboardScreen from './screens/Leaderboard/LeaderboardScreen.jsx'
+import dummy from './screens/Leaderboard/LeaderboardDummy.jsx';
+
 function App() {
   return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
+    <LeaderboardScreen leaderInfo={dummy}></LeaderboardScreen>
   );
 }
 
