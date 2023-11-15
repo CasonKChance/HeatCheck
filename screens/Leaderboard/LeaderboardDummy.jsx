@@ -1,4 +1,5 @@
 //Example of leaderInfo to pass in:
+//import dummy from './screens/Leaderboard/LeaderboardDummy';
 
 const p1 = {
   name: 'Lebron',

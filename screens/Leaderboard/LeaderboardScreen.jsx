@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import LeaderboardRow from './LeaderboardRow';
 
@@ -12,6 +13,11 @@ const LeaderboardScreen = ({leaderInfo}) => {
 
   return (
     <ScrollView>
+      <View style={styles.backButtonContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={require('../../assets/images/backarrow.png')} style={{ width: 20, height: 20 }} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.container}>
         <View style={styles.column}>
           <Text style={styles.header}>Rank</Text>
@@ -41,6 +47,12 @@ const styles = StyleSheet.create({
     container: {
       flexDirection: 'row',
       flex: 1,
+    },
+    backButtonContainer: {
+      position: 'absolute',
+      top: 10,
+      left: 10,
+      zIndex: 1,
     },
     column: {
       flex: 1,

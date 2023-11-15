@@ -1,25 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-/**Example of userInfo to pass in:
-  const dummy = {
-    name: 'Lebron',
-    skillRating: 99,
-    position: 'Point Forward',
-    height: '6ft 9in',
-    weight: '250 lbs',
-    playType: 'Slashing Playmaker',
-    age: '38',
-    profileImage: require('./assets/images/lebron.jpeg'),
-    rank: '1',
-    gamesPlayed: '100',
-  };
- */
+//Go to LeaderboardDummy.jsx to find dummy data for leaderInfo
+
 const PlayerProfileScreen = ({userInfo}) => {
   const { name, skillRating, position, height, weight, playType, age, profileImage } = userInfo;
   
   return (
     <View style={styles.container}>
+      <View style={styles.backButtonContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={require('../../assets/images/backarrow.png')} style={{ width: 20, height: 20 }} />
+        </TouchableOpacity>
+      </View>
       <Image source={profileImage} style={styles.profileImage} />
       <View style={styles.infoContainer}>
         <Text style={styles.nameText}>Name: {name}</Text>
@@ -39,6 +32,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#f5f5f5',
+  },
+  backButtonContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
   },
   profileImage: {
     width: 120,
