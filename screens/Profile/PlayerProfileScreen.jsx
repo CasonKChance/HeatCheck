@@ -1,23 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-/**Example of userInfo to pass in:
-const dummy = {
-    name: 'Charlie',
-    skillRating: 99,
-    position: 'Wing',
-    height: '6ft 3in',
-    weight: '185 lbs',
-    playType: 'Playmaking Sharpshooter',
-    age: 20,
-    profileImage: { uri: 'stripes' }
-};
- */
+//Go to LeaderboardDummy.jsx to find dummy data for leaderInfo
+
 const PlayerProfileScreen = ({userInfo}) => {
   const { name, skillRating, position, height, weight, playType, age, profileImage } = userInfo;
   
   return (
     <View style={styles.container}>
+      <View style={styles.backButtonContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={require('../../assets/images/backarrow.png')} style={{ width: 20, height: 20 }} />
+        </TouchableOpacity>
+      </View>
       <Image source={profileImage} style={styles.profileImage} />
       <View style={styles.infoContainer}>
         <Text style={styles.nameText}>Name: {name}</Text>
@@ -37,6 +32,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#f5f5f5',
+  },
+  backButtonContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
   },
   profileImage: {
     width: 120,
