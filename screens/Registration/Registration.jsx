@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import RequiredScreen from './RequiredScreen';
 import OptionalScreen from './OptionalScreen';
 import PrimaryPlaytypeScreen from './PrimaryPlaytypeScreen';
-import {UserDataProvider} from './UserDataContext';
+import {UserDataProvider} from '../../context/UserDataContext';
 
 const Stack = createStackNavigator();
 

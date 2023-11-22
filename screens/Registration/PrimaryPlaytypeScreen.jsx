@@ -1,9 +1,10 @@
 import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import FlippableCard from '../../components/wrappers/FlippableCard';
-import {useUserData} from './UserDataContext';
+import {useUserData} from '../../context/UserDataContext';
 import {View, Text, StyleSheet} from 'react-native';
 import playTypes from './playTypes';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const playTypeStyles = playTypes.map((_, index) => ({
   position: 'absolute',
@@ -18,20 +19,22 @@ const PrimaryPlaytypeScreen = ({navigation, route}) => {
   };
   return (
     <BackgroundWrapperContainer>
-      <Text style={styles.titleText}>Select your Primary Playtype</Text>
-      {playTypes.map((playType, index) => (
-        <View
-          key={index}
-          style={[styles.playTypeContainer, playTypeStyles[index]]}>
-          <FlippableCard
-            frontContent={playType.name}
-            backContent={playType.description}
-            navigation={navigation}
-            handleUserData={() => updateUserData({playType: playType.name})}
-            userData={userData}
-          />
-        </View>
-      ))}
+      <SafeAreaView>
+        <Text style={styles.titleText}>Select your Primary Playtype</Text>
+        {playTypes.map((playType, index) => (
+          <View
+            key={index}
+            style={[styles.playTypeContainer, playTypeStyles[index]]}>
+            <FlippableCard
+              frontContent={playType.name}
+              backContent={playType.description}
+              navigation={navigation}
+              handleUserData={() => updateUserData({playType: playType.name})}
+              userData={userData}
+            />
+          </View>
+        ))}
+      </SafeAreaView>
     </BackgroundWrapperContainer>
   );
 };

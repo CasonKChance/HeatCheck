@@ -8,11 +8,11 @@ export const useUserData = () => {
 
 export const UserDataProvider = ({children}) => {
   const [userData, setUserData] = useState({
-    firstName: undefined,
-    lastName: undefined,
-    emailAddress: undefined,
-    password: undefined,
-    confirmPassword: undefined,
+    firstName: '',
+    lastName: '',
+    emailAddress: '',
+    password: '',
+    confirmPassword: '',
     position: undefined,
     hometown: undefined,
     skillLevel: undefined,

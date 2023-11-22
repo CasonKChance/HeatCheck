@@ -14,11 +14,12 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		406381927482427CB1C57E56 /* stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BA0E50FC5C4A7E8E20E8CA /* stripes.png */; };
 		77E33A130B854DFAB824C3EE /* twitter.svg in Resources */ = {isa = PBXBuildFile; fileRef = F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */; };
-		9D9321D02EE249A2B9FA2C62 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */; };
+		81AB9BB82411601600AC10FF /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		90CEC0C20F224AE6A05E0FAE /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		9D9321D02EE249A2B9FA2C62 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		A35DE3BE488F4C1BB7483A30 /* facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = FB7026CB1C614583B8B75B7C /* facebook.svg */; };
 		CCA48184B92846F3BA5B31FA /* google.svg in Resources */ = {isa = PBXBuildFile; fileRef = E4D75426A02744748D728D10 /* google.svg */; };
+		E56BE1806D293EE166FC02EB /* libPods-HeatCheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C236593380B15AC41270A206 /* libPods-HeatCheck.a */; };
 		EA9B76AADE76422F9AF544D0 /* Graduate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */; };
 		F35F5C55CB654A64877BE735 /* flaming-basketbal.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B79FA83C884D608ED0B636 /* flaming-basketbal.png */; };
 /* End PBXBuildFile section */
@@ -50,10 +51,6 @@
 		2943379E913B3D7D4D3D221A /* Pods-HeatCheck-HeatCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck-HeatCheckTests/Pods-HeatCheck-HeatCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Graduate-Regular.ttf"; path = "../assets/fonts/Graduate-Regular.ttf"; sourceTree = "<group>"; };
 		68CBE077DD2715F57F2CCA88 /* Pods-HeatCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.release.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.release.xcconfig"; sourceTree = "<group>"; };
-		BB9F21DF63791CD6C6BF171B /* Pods-HeatCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeatCheck.debug.xcconfig"; path = "Target Support Files/Pods-HeatCheck/Pods-HeatCheck.debug.xcconfig"; sourceTree = "<group>"; };
-		E4D75426A02744748D728D10 /* google.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = google.svg; path = ../assets/images/google.svg; sourceTree = "<group>"; };
-		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = twitter.svg; path = ../assets/images/twitter.svg; sourceTree = "<group>"; };
 		C236593380B15AC41270A206 /* libPods-HeatCheck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeatCheck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D75426A02744748D728D10 /* google.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = google.svg; path = ../assets/images/google.svg; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -75,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73A09DABBE30FEC92F76C739 /* libPods-HeatCheck.a in Frameworks */,
+				E56BE1806D293EE166FC02EB /* libPods-HeatCheck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +103,6 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = HeatCheck;
@@ -157,14 +153,12 @@
 		ACD919131E624170A2ECCFDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B84A62E714E2433D9AA54320 /* BakbakOne-Regular.ttf */,
 				14BA0E50FC5C4A7E8E20E8CA /* stripes.png */,
 				3B1DB9B3DD2B4806BFC62EB2 /* Graduate-Regular.ttf */,
 				FB7026CB1C614583B8B75B7C /* facebook.svg */,
 				13B79FA83C884D608ED0B636 /* flaming-basketbal.png */,
 				E4D75426A02744748D728D10 /* google.svg */,
 				F3D54D7E76B6457B9EFEDAA3 /* twitter.svg */,
-				7FCCF806ADE54DA9B17A334B /* BebasNeue-Regular.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -275,16 +269,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				81AB9BB82411601600AC10FF /* BuildFile in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				90CEC0C20F224AE6A05E0FAE /* BakbakOne-Regular.ttf in Resources */,
+				90CEC0C20F224AE6A05E0FAE /* BuildFile in Resources */,
 				406381927482427CB1C57E56 /* stripes.png in Resources */,
 				EA9B76AADE76422F9AF544D0 /* Graduate-Regular.ttf in Resources */,
 				A35DE3BE488F4C1BB7483A30 /* facebook.svg in Resources */,
 				F35F5C55CB654A64877BE735 /* flaming-basketbal.png in Resources */,
 				CCA48184B92846F3BA5B31FA /* google.svg in Resources */,
 				77E33A130B854DFAB824C3EE /* twitter.svg in Resources */,
-				9D9321D02EE249A2B9FA2C62 /* BebasNeue-Regular.ttf in Resources */,
+				9D9321D02EE249A2B9FA2C62 /* BuildFile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
