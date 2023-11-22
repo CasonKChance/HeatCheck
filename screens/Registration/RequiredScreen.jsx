@@ -165,7 +165,7 @@ const RequiredScreen = ({navigation}) => {
               if (!isEnabled) {
                 setPasswordError('Please fix the errors before continuing.'); // Show a general error message
               } else {
-                navigation.navigate('Optional', {userData});
+                navigation.navigate('Playtype', {userData});
               }
             }}
             disabled={!isEnabled}>
