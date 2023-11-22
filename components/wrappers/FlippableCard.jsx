@@ -1,13 +1,14 @@
-import React, { useState, useRef } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Animated,
-} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {StyleSheet, Text, TouchableOpacity, Animated} from 'react-native';
 import FlippableCardButton from '../buttons/FlippableCardButton';
 
-const FlippableCard = ({ frontContent, backContent }) => {
+const FlippableCard = ({
+  frontContent,
+  backContent,
+  navigation,
+  handleUserData,
+  userData,
+}) => {
   const flipAnim = useRef(new Animated.Value(0)).current;
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -62,7 +63,13 @@ const FlippableCard = ({ frontContent, backContent }) => {
         </Animated.View>
         <Animated.View style={[styles.cardBack, backAnimatedStyle]}>
           <Text style={styles.backText}>{backContent}</Text>
-          { isFlipped ? <FlippableCardButton /> : null }
+          {isFlipped ? (
+            <FlippableCardButton
+              navigation={navigation}
+              handleUserData={handleUserData}
+              userData={userData}
+            />
+          ) : null}
         </Animated.View>
       </Animated.View>
     </TouchableOpacity>
@@ -101,10 +108,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#ddd',
-    justifyContent: 'space-between',  // Align content to the top of the card
+    justifyContent: 'space-between', // Align content to the top of the card
     alignItems: 'center',
-    padding: 10,  // Add some padding to give a little space from the top
-    transform: [{ rotateY: '180deg' }],
+    padding: 10, // Add some padding to give a little space from the top
+    transform: [{rotateY: '180deg'}],
   },
   backText: {
     fontSize: 11,

@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   rect3: {
     width: width / 1.35,
     height: height / 12.5,
-    backgroundColor: "rgba(39,45,45,1)",
+    backgroundColor: 'rgba(39,45,45,1)',
     borderRadius: 40,
     shadowColor: 'rgba(43,45,66,1)',
     shadowOffset: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   login: {
     fontFamily: 'BakbakOne-Regular',
-    color: "rgba(255,255,255,1)",
+    color: 'rgba(255,255,255,1)',
     fontSize: 20,
   },
 });
