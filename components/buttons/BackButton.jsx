@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const BackButton = ({navigation, style, isInitRegister}) => {
+const BackButton = ({navigation, style, isInitRegister = false}) => {
   const navigate = () => {
     isInitRegister ? navigation.navigate('Start') : navigation.goBack();
   };

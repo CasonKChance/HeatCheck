@@ -1,13 +1,15 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-
+import {UserAuthProvider} from './context/UserAuthContext';
 import MyStack from './navigation/MyStack';
 
 function App() {
   return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
+    <UserAuthProvider>
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+    </UserAuthProvider>
   );
 }
 

@@ -1,57 +1,46 @@
 import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import BackButton from '../../components/buttons/BackButton';
-import {useUserData} from './UserDataContext';
+import ageGroups from './ageGroups';
+import positions from './positions';
+import skillLevels from './skillsLevels';
+import {SelectList} from 'react-native-dropdown-select-list';
+import {useUserData} from '../../context/UserDataContext';
+import {useUserAuth} from '../../context/UserAuthContext';
+import {CommonActions} from '@react-navigation/native';
 import {
   TouchableOpacity,
   View,
   Text,
-  TextInput,
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
 
-const submitHandler = () => {};
-
-const OptionalScreen = ({navigation, route}) => {
+const OptionalScreen = ({navigation}) => {
   const {userData, setUserData} = useUserData();
-  console.log(userData);
-
-  const skillLevelOptions = [
-    {label: 'Professional / Division 1', value: '90-99'},
-    {label: 'Collegiate', value: '80-89'},
-    {label: 'Varsity', value: '70-79'},
-    {label: 'Junior Varsity', value: '60-69'},
-    {label: 'Casual', value: '50-59'},
-    {label: 'Beginner', value: '40-49'},
-  ];
-
-  const ageGroupOptions = [
-    {label: '18-25', value: '18-25'},
-    {label: '26-35', value: '26-35'},
-    {label: '36-45', value: '36-45'},
-  ];
-
-  const positionOptions = [
-    {label: 'Point Guard', value: '1'},
-    {label: 'Combo Guard', value: '1/2'},
-    {label: 'Shooting Guard', value: '2'},
-    {label: 'Wing', value: '2/3'},
-    {label: 'Small Forward', value: '3'},
-    {label: 'Point Forward', value: '3/4'},
-    {label: 'Power Forward', value: '4'},
-    {label: 'Big Man', value: '4/5'},
-    {label: 'Center', value: '5'},
-  ];
+  const {setIsUserAuth} = useUserAuth();
+  const navigateToHome = () => {
+    setIsUserAuth(true);
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'Home', // Replace with the name of the screen you want to navigate to in the parent navigator
+      }),
+    );
+  };
 
   const renderPicker = (label, field, items) => {
     return (
       <View style={styles.inputContainer}>
         <Text>{label}</Text>
-        {/* <Picker
-          onValueChange={value => setUserData({...userData, [field]: value})}
-          items={items}
-        /> */}
+        <View style={styles.pickerContainer}>
+          <SelectList
+            setSelected={value => setUserData({...userData, [field]: value})}
+            data={items}
+            save={items.value}
+            fontFamily="BakbakOne-Regular"
+            search={false}
+          />
+        </View>
       </View>
     );
   };
@@ -63,18 +52,12 @@ const OptionalScreen = ({navigation, route}) => {
             <Text style={styles.header}>Optional</Text>
             <BackButton navigation={navigation} />
           </View>
-          {renderPicker(
-            'Pick Your Skill Level',
-            'skillLevel',
-            skillLevelOptions,
-          )}
-          {renderPicker('Pick Your Age Group', 'ageGroup', ageGroupOptions)}
-          {renderPicker('Pick Your Position', 'position', positionOptions)}
+          {renderPicker('Pick Your Skill Level', 'skillLevel', skillLevels)}
+          {renderPicker('Pick Your Age Group', 'ageGroup', ageGroups)}
+          {renderPicker('Pick Your Position', 'position', positions)}
           <TouchableOpacity
             style={styles.submitButton}
-            onPress={() => {
-              navigation.navigate('Home');
-            }}>
+            onPress={navigateToHome}>
             <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -103,16 +86,24 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row',
+    alignItems: 'center', // Vertically center items
+    justifyContent: 'space-between', // Space evenly between items
     borderBottomWidth: 2,
     paddingBottom: 8,
     marginBottom: 25,
     color: 'rgba(43, 45, 66, 1)',
+  },
+  pickerContainer: {
+    flex: 1, // Take up all available horizontal space
+    flexDirection: 'row', // Allow items inside pickerContainer to align to the right
+    justifyContent: 'flex-end', // Align items to the right
   },
   submitButton: {
     backgroundColor: 'rgba(239,35,60,1)',
     padding: 20,
     borderRadius: 10,
     marginBottom: 30,
+    justifyContent: 'space-between',
   },
   submitButtonText: {
     fontFamily: 'BakbakOne-Regular',
