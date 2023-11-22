@@ -46,6 +46,13 @@ const playTypeStyles = playTypes.map((_, index) => ({
 }));
 
 const PrimaryPlaytypeScreen = ({navigation, route}) => {
+  const [userData, setUserData] = useState({
+    ...route.params?.userData,
+    playType: undefined,
+  });
+  const updateUserData = newUserData => {
+    setUserData({...userData, ...newUserData});
+  };
   return (
     <BackgroundWrapperContainer>
       <Text style={styles.titleText}>Select your Primary Playtype</Text>
@@ -57,6 +64,8 @@ const PrimaryPlaytypeScreen = ({navigation, route}) => {
             frontContent={playType.name}
             backContent={playType.description}
             navigation={navigation}
+            handleUserData={() => updateUserData({playType: playType.name})}
+            userData={userData}
           />
         </View>
       ))}

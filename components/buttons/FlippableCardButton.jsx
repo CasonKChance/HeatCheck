@@ -1,11 +1,14 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const FlippableCardButton = ({navigation}) => {
+const FlippableCardButton = ({navigation, handleUserData, userData}) => {
   return (
     <TouchableOpacity
       style={styles.button}
-      onPress={() => navigation.navigate('Optional')}>
+      onPress={() => {
+        handleUserData();
+        navigation.navigate('Optional', {userData});
+      }}>
       <Text style={styles.buttonText}>Select</Text>
     </TouchableOpacity>
   );

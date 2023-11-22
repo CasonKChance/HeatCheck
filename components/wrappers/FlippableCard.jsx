@@ -2,7 +2,13 @@ import React, {useState, useRef} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Animated} from 'react-native';
 import FlippableCardButton from '../buttons/FlippableCardButton';
 
-const FlippableCard = ({frontContent, backContent, navigation}) => {
+const FlippableCard = ({
+  frontContent,
+  backContent,
+  navigation,
+  handleUserData,
+  userData,
+}) => {
   const flipAnim = useRef(new Animated.Value(0)).current;
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -57,7 +63,13 @@ const FlippableCard = ({frontContent, backContent, navigation}) => {
         </Animated.View>
         <Animated.View style={[styles.cardBack, backAnimatedStyle]}>
           <Text style={styles.backText}>{backContent}</Text>
-          {isFlipped ? <FlippableCardButton navigation={navigation} /> : null}
+          {isFlipped ? (
+            <FlippableCardButton
+              navigation={navigation}
+              handleUserData={handleUserData}
+              userData={userData}
+            />
+          ) : null}
         </Animated.View>
       </Animated.View>
     </TouchableOpacity>
