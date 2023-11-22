@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
+import BackButton from '../../components/buttons/BackButton';
+import {useUserData} from './UserDataContext';
 import {
   TouchableOpacity,
   View,
@@ -12,15 +14,8 @@ import {
 const submitHandler = () => {};
 
 const OptionalScreen = ({navigation, route}) => {
-  const [userData, setUserData] = useState({
-    ...route.params?.userData,
-    position: undefined,
-    hometown: undefined,
-    skillLevel: undefined,
-    height: undefined,
-    weight: undefined,
-    ageGroup: undefined,
-  });
+  const {userData, setUserData} = useUserData();
+  console.log(userData);
 
   const skillLevelOptions = [
     {label: 'Professional / Division 1', value: '90-99'},
@@ -53,7 +48,7 @@ const OptionalScreen = ({navigation, route}) => {
     return (
       <View style={styles.inputContainer}>
         <Text>{label}</Text>
-        {/* <RNPickerSelect
+        {/* <Picker
           onValueChange={value => setUserData({...userData, [field]: value})}
           items={items}
         /> */}
@@ -64,10 +59,10 @@ const OptionalScreen = ({navigation, route}) => {
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <View style={styles.container}>
-          <Text style={styles.header}>Optional</Text>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text>Back</Text>
-          </TouchableOpacity>
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>Optional</Text>
+            <BackButton navigation={navigation} />
+          </View>
           {renderPicker(
             'Pick Your Skill Level',
             'skillLevel',
@@ -78,7 +73,7 @@ const OptionalScreen = ({navigation, route}) => {
           <TouchableOpacity
             style={styles.submitButton}
             onPress={() => {
-              navigation.navigate('Start');
+              navigation.navigate('Home');
             }}>
             <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
@@ -98,6 +93,12 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
+    marginTop: 20,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 20,
   },
   inputContainer: {

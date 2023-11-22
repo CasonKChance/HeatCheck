@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
+import BackButton from '../../components/buttons/BackButton';
+import {useUserData} from './UserDataContext';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
@@ -11,19 +13,9 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-// import GoogleSVG from '../../assets/images/google.svg';
-// import FacebookSVG from '../../assets/images/facebook.svg';
-// import TwitterSVG from '../../assets/images/twitter.svg';
 
 const RequiredScreen = ({navigation}) => {
-  const [userData, setUserData] = useState({
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    password: '',
-    confirmPassword: '',
-  });
-
+  const {userData, setUserData} = useUserData();
   const [isEnabled, setIsEnabled] = useState(false);
   const [passwordError, setPasswordError] = useState('');
 
@@ -121,10 +113,11 @@ const RequiredScreen = ({navigation}) => {
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <ScrollView style={styles.container}>
-          <Text style={styles.header}>Register</Text>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text>Back</Text>
-          </TouchableOpacity>
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>Register</Text>
+            <BackButton navigation={navigation} isInitRegister={true} />
+          </View>
+
           {renderInputWithIcon('First Name', 'firstName', handleInputChange)}
           {renderInputWithIcon('Last Name', 'lastName', handleInputChange)}
           {renderInputWithIcon(
@@ -163,7 +156,6 @@ const RequiredScreen = ({navigation}) => {
             disabled={!isEnabled}>
             <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
-          <Text style={styles.otherRegisterText}>Or, register with ...</Text>
           <View style={styles.newUserContainer}>
             <Text style={styles.newUserText}>Already registered?</Text>
             <TouchableOpacity
@@ -191,6 +183,12 @@ const styles = StyleSheet.create({
     color: 'rgba(43,45,66,1)',
     marginTop: 20,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
   inputContainer: {
     flexDirection: 'row',
     borderBottomWidth: 2,
@@ -214,10 +212,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   continueButton: {
-    backgroundColor: 'rgba(239,35,60,1)',
     padding: 20,
     borderRadius: 10,
     marginBottom: 30,
+    backgroundColor: isEnabled => (isEnabled ? 'rgba(239,35,60,1)' : 'gray'),
   },
   continueButtonText: {
     fontFamily: 'BakbakOne-Regular',
@@ -245,6 +243,7 @@ const styles = StyleSheet.create({
   loginLinkText: {
     color: 'rgba(239,35,60,1)',
     fontWeight: '700',
+    marginLeft: 5,
   },
 });
 
