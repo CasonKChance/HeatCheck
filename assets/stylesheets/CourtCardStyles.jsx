@@ -37,9 +37,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 'auto',
   },
-  edit: {
-    color: 'blue',
-  },
 });
 
 export default styles;
