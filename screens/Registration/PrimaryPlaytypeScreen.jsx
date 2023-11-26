@@ -2,9 +2,8 @@ import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import FlippableCard from '../../components/wrappers/FlippableCard';
 import {useUserData} from '../../context/UserDataContext';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import playTypes from './playTypes';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const playTypeStyles = playTypes.map((_, index) => ({
   position: 'absolute',
@@ -19,7 +18,7 @@ const PrimaryPlaytypeScreen = ({navigation, route}) => {
   };
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView>
+      <ScrollView>
         <Text style={styles.titleText}>Select your Primary Playtype</Text>
         {playTypes.map((playType, index) => (
           <View
@@ -34,23 +33,38 @@ const PrimaryPlaytypeScreen = ({navigation, route}) => {
             />
           </View>
         ))}
-      </SafeAreaView>
+      </ScrollView>
     </BackgroundWrapperContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  playTypeContainer: {
-    // You can keep this empty for shared styles
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  titleContainer: {
+    marginTop: 40,
+    marginBottom: 20,
+    alignItems: 'center',
   },
   titleText: {
-    position: 'absolute',
-    top: 35,
-    left: 50,
-    fontSize: 20,
-    fontFamily: 'Georgia',
+    color: '#FF1B1C',
     fontWeight: 'bold',
+    fontSize: 26,
+    fontFamily: 'BakBakOne-Regular',
   },
+  playtypeContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  playtypeCard: {
+    margin: 0,
+  },
+  // Define scrollViewContent if needed
+  // scrollViewContent: { /* Your styles here */ },
 });
-
-export default PrimaryPlaytypeScreen;
+export default PrimaryPlaytypeScreen
