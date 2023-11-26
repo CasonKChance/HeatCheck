@@ -3,15 +3,7 @@ import {useState} from 'react';
 import styles from '../../assets/stylesheets/HomeScreenStyles.jsx';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import CourtCard from '../../components/buttons/CourtCard.jsx';
-import {
-  TouchableOpacity,
-  View,
-  ScrollView,
-  Text,
-  TextInput,
-  SafeAreaView,
-  StyleSheet,
-} from 'react-native';
+import {View, ScrollView, Text} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 

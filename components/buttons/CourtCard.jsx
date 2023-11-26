@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../assets/stylesheets/CourtCardStyles.jsx';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 
 const CourtCard = props => {
   const onPress = () => {
