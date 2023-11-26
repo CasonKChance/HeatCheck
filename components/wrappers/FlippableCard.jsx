@@ -1,6 +1,14 @@
-import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, TouchableOpacity, Animated } from 'react-native';
+import React, {useState, useRef} from 'react';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Animated,
+  Dimensions,
+} from 'react-native';
 import FlippableCardButton from '../buttons/FlippableCardButton';
+
+const {width, height} = Dimensions.get('screen');
 
 const FlippableCard = ({
   frontContent,
@@ -54,13 +62,13 @@ const FlippableCard = ({
         </Animated.View>
         <Animated.View style={[styles.cardBack, backAnimatedStyle]}>
           <Text style={styles.backText}>{backContent}</Text>
-          {isFlipped ? (
+          {isFlipped && (
             <FlippableCardButton
               navigation={navigation}
               handleUserData={handleUserData}
               userData={userData}
             />
-          ) : null}
+          )}
         </Animated.View>
       </Animated.View>
     </TouchableOpacity>
@@ -71,8 +79,8 @@ export default FlippableCard;
 
 const styles = StyleSheet.create({
   card: {
-    width: 300,
-    height: 200,
+    width: width / 1.2,
+    height: height / 5,
     borderWidth: 2,
     borderColor: 'black',
     margin: 10,
@@ -92,8 +100,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ddd',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 27,
-    transform: [{ rotateY: '180deg' }],
+    padding: 30,
+    transform: [{rotateY: '180deg'}],
   },
   frontText: {
     fontFamily: 'BakBakOne-Regular',
@@ -104,4 +112,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
