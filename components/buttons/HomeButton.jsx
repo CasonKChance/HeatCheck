@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
-const LoginButton = ({onPress}) => {
+const HomeButton = ({onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container]}>
         <View style={styles.rect3}>
-          <Text style={styles.login}>Login</Text>
+          <Text style={styles.home}>Home</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   rect3: {
+    marginTop: 100,
     width: width / 1.35,
     height: height / 12.5,
     backgroundColor: 'rgba(39,45,45,1)',
@@ -40,11 +41,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  login: {
+  home: {
     fontFamily: 'BakbakOne-Regular',
     color: 'rgba(255,255,255,1)',
     fontSize: 20,
   },
 });
 
-export default LoginButton;
+export default HomeButton;

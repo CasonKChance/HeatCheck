@@ -1,52 +1,65 @@
-import React, {useState} from 'react';
+import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
+import BackButton from '../../components/buttons/BackButton';
+import ageGroups from './ageGroups';
+import positions from './positions';
+import skillLevels from './skillsLevels';
+import {SelectList} from 'react-native-dropdown-select-list';
+import {useUserData} from '../../context/UserDataContext';
+import {useUserAuth} from '../../context/UserAuthContext';
+import {CommonActions} from '@react-navigation/native';
 import {
   TouchableOpacity,
   View,
   Text,
-  TextInput,
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
 
-const submitHandler = () => {};
+const OptionalScreen = ({navigation}) => {
+  const {userData, setUserData} = useUserData();
+  const {setIsUserAuth} = useUserAuth();
+  const navigateToHome = () => {
+    setIsUserAuth(true);
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'Home', // Replace with the name of the screen you want to navigate to in the parent navigator
+      }),
+    );
+  };
 
-const OptionalScreen = ({navigation, route}) => {
-  const [userData, setUserData] = useState(route.params?.userData);
+  const renderPicker = (label, field, items) => {
+    return (
+      <View style={styles.inputContainer}>
+        <Text>{label}</Text>
+        <View style={styles.pickerContainer}>
+          <SelectList
+            setSelected={value => setUserData({...userData, [field]: value})}
+            data={items}
+            save={items.value}
+            fontFamily="BakbakOne-Regular"
+            search={false}
+          />
+        </View>
+      </View>
+    );
+  };
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView>
-        <View style={{paddingHorizontal: 25}}>
-          <Text style={styles.header}>Optional</Text>
-          <View style={styles.inputContainer}>
-            <TextInput placeholder="First Name" style={styles.emailField} />
+        <View style={styles.container}>
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>Optional</Text>
+            <BackButton navigation={navigation} />
           </View>
-          <View style={styles.inputContainer}>
-            <TextInput placeholder="Last Name" style={styles.emailField} />
-          </View>
-
-          <TouchableOpacity style={styles.loginButton} onPress={submitHandler}>
-            <Text style={styles.loginButtonText}>Submit</Text>
+          {renderPicker('Pick Your Skill Level', 'skillLevel', skillLevels)}
+          {renderPicker('Pick Your Age Group', 'ageGroup', ageGroups)}
+          {renderPicker('Pick Your Position', 'position', positions)}
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={navigateToHome}>
+            <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
-          <View style={styles.newUserContainer}>
-            <Text
-              style={{
-                color: 'rgba(43, 45, 66, 1)',
-                fontWeight: '700',
-                fontFamily: 'BakbakOne-Regular',
-              }}>
-              Already registered?
-            </Text>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Login');
-              }}>
-              <Text style={{color: 'rgba(239,35,60,1)', fontWeight: '700'}}>
-                {' '}
-                Login
-              </Text>
-            </TouchableOpacity>
-          </View>
         </View>
       </SafeAreaView>
     </BackgroundWrapperContainer>
@@ -54,59 +67,50 @@ const OptionalScreen = ({navigation, route}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 25,
+  },
   header: {
     fontFamily: 'BakbakOne-Regular',
     fontSize: 28,
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
+    marginTop: 20,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 20,
   },
   inputContainer: {
     flexDirection: 'row',
+    alignItems: 'center', // Vertically center items
+    justifyContent: 'space-between', // Space evenly between items
     borderBottomWidth: 2,
     paddingBottom: 8,
     marginBottom: 25,
     color: 'rgba(43, 45, 66, 1)',
   },
-  emailField: {
-    fontFamily: 'BakbakOne-Regular',
-    flex: 1,
-    paddingVertical: 0,
-    color: 'rgba(43,45,66,1)',
+  pickerContainer: {
+    flex: 1, // Take up all available horizontal space
+    flexDirection: 'row', // Allow items inside pickerContainer to align to the right
+    justifyContent: 'flex-end', // Align items to the right
   },
-  passwordField: {
-    fontFamily: 'BakbakOne-Regular',
-    flex: 1,
-    paddingVertical: 0,
-  },
-  forgot: {
-    color: 'rgba(239,35,60,1)',
-    fontFamily: 'BakbakOne-Regular',
-    fontWeight: '700',
-  },
-  loginButton: {
+  submitButton: {
     backgroundColor: 'rgba(239,35,60,1)',
     padding: 20,
     borderRadius: 10,
     marginBottom: 30,
+    justifyContent: 'space-between',
   },
-  loginButtonText: {
+  submitButtonText: {
     fontFamily: 'BakbakOne-Regular',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
     fontSize: 16,
-  },
-  otherLoginText: {
-    fontFamily: 'BakbakOne-Regular',
-    textAlign: 'center',
-    color: 'rgba(43,45,66,1)',
-    marginBottom: 30,
-  },
-  newUserContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 30,
   },
 });
 

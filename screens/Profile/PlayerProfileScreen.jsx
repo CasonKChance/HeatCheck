@@ -1,5 +1,5 @@
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
 
 /**Example of userInfo to pass in:
 const dummy = {
@@ -13,20 +13,41 @@ const dummy = {
     profileImage: { uri: 'stripes' }
 };
  */
-const PlayerProfileScreen = ({userInfo}) => {
-  const { name, skillRating, position, height, weight, playType, age, profileImage } = userInfo;
-  
+const ProfileImage = ({source}) => (
+  <Image source={source} style={styles.profileImage} />
+);
+
+const PlayerProfileScreen = ({
+  userInfo: {
+    name,
+    skillRating,
+    position,
+    height,
+    weight,
+    playType,
+    age,
+    profileImage,
+  },
+}) => {
+  const detailItems = [
+    {label: 'Skill Rating', value: skillRating},
+    {label: 'Position', value: position},
+    {label: 'Height', value: height},
+    {label: 'Weight', value: weight},
+    {label: 'Play Type', value: playType},
+    {label: 'Age', value: age},
+  ];
+
   return (
     <View style={styles.container}>
-      <Image source={profileImage} style={styles.profileImage} />
+      <ProfileImage source={profileImage} />
       <View style={styles.infoContainer}>
         <Text style={styles.nameText}>Name: {name}</Text>
-        <Text style={styles.detailText}>Skill Rating: {skillRating} </Text>
-        <Text style={styles.detailText}>Position: {position}</Text>
-        <Text style={styles.detailText}>Height: {height}</Text>
-        <Text style={styles.detailText}>Weight:  {weight}</Text>
-        <Text style={styles.detailText}>Play Type: {playType}</Text>
-        <Text style={styles.detailText}>Age: {age}</Text>
+        {detailItems.map((item, index) => (
+          <Text key={index} style={styles.detailText}>
+            {item.label}: {item.value}
+          </Text>
+        ))}
       </View>
     </View>
   );
@@ -37,6 +58,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#f5f5f5',
+  },
+  backButtonContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
   },
   profileImage: {
     width: 120,
@@ -53,7 +80,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 5,
     shadowColor: '#000',
-    shadowOffset: { height: 0, width: 0 },
+    shadowOffset: {height: 0, width: 0},
   },
   nameText: {
     fontSize: 26,
