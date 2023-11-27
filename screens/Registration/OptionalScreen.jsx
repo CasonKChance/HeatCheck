@@ -23,7 +23,7 @@ const OptionalScreen = ({navigation}) => {
     setIsUserAuth(true);
     navigation.dispatch(
       CommonActions.navigate({
-        name: 'Home', // Replace with the name of the screen you want to navigate to in the parent navigator
+        name: 'Home',
       }),
     );
   };

@@ -1,12 +1,12 @@
 // MyStack.js
-import React, {useState} from 'react';
+import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/Home/HomeScreen';
 import StartScreen from '../screens/Start/StartScreen';
 import Registration from '../screens/Registration/Registration';
 import LoginScreen from '../screens/Login/LoginScreen';
 import PrimaryPlaytypeScreen from '../screens/Registration/PrimaryPlaytypeScreen';
 import {useUserAuth} from '../context/UserAuthContext';
+import HomeNavigation from '../screens/Home/HomeNavigation';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +18,7 @@ const MyStack = () => {
       screenOptions={{headerShown: false}}
       name="Root">
       {isUserAuth ? (
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeNavigation} />
       ) : (
         <Stack.Group>
           <Stack.Screen name="Start" component={StartScreen} />

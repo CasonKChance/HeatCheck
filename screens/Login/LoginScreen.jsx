@@ -2,6 +2,8 @@ import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {CommonActions} from '@react-navigation/native';
+import {useUserAuth} from '../../context/UserAuthContext';
 import {
   TouchableOpacity,
   View,
@@ -25,6 +27,15 @@ const InputField = ({placeholder, secureTextEntry, keyboardType, icon}) => (
 );
 
 const LoginScreen = ({navigation}) => {
+  const {setIsUserAuth} = useUserAuth();
+  const navigateToHome = () => {
+    setIsUserAuth(true);
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'Home', // Replace with the name of the screen you want to navigate to in the parent navigator
+      }),
+    );
+  };
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView style={styles.container}>
@@ -54,11 +65,7 @@ const LoginScreen = ({navigation}) => {
           }
         />
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => {
-            navigation.goBack();
-          }}>
+        <TouchableOpacity style={styles.loginButton} onPress={navigateToHome}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
 
