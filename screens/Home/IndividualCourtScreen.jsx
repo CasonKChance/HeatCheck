@@ -1,20 +1,42 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Button, Image, StyleSheet} from 'react-native';
 
-const IndividualCourtScreen = ({courtInfo}) => {
-  const [availability, setAvailability] = useState('AVAILABLE'); // AVAILABLE, LOOKING_FOR_PLAYERS, FULL
-  const [numPlayers, setNumPlayers] = useState(0);
+const AVAILABILITY = {
+  AVAILABLE: 'AVAILABLE',
+  LOOKING_FOR_PLAYERS: 'LOOKING_FOR_PLAYERS',
+  FULL: 'FULL',
+};
 
-  // Update availability based on numPlayers
+const IndividualCourtScreen = ({courtInfo}) => {
+  const [numPlayers, setNumPlayers] = useState(0);
+  const [availability, setAvailability] = useState(AVAILABILITY.AVAILABLE);
+
   useEffect(() => {
-    if (numPlayers === 10) {
-      setAvailability('FULL');
-    } else if (numPlayers === 1) {
-      setAvailability('LOOKING_FOR_PLAYERS');
-    } else {
-      setAvailability('AVAILABLE');
-    }
+    const calculateAvailability = () => {
+      if (numPlayers === 10) {
+        return AVAILABILITY.FULL;
+      } else if (numPlayers === 1) {
+        return AVAILABILITY.LOOKING_FOR_PLAYERS;
+      } else {
+        return AVAILABILITY.AVAILABLE;
+      }
+    };
+
+    setAvailability(calculateAvailability());
   }, [numPlayers]);
+
+  const getAvailabilityText = () => {
+    switch (availability) {
+      case AVAILABILITY.AVAILABLE:
+        return 'Available';
+      case AVAILABILITY.LOOKING_FOR_PLAYERS:
+        return 'Looking for Players';
+      case AVAILABILITY.FULL:
+        return 'Full';
+      default:
+        return '';
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -26,18 +48,12 @@ const IndividualCourtScreen = ({courtInfo}) => {
       <Image source={courtInfo.mapImage} style={styles.mapImage} />
 
       <View style={styles.availabilityContainer}>
-        <Text style={styles.availabilityText}>
-          {availability === 'AVAILABLE'
-            ? 'Available'
-            : availability === 'LOOKING_FOR_PLAYERS'
-            ? 'Looking for Players'
-            : 'Full'}
-        </Text>
-        {availability === 'LOOKING_FOR_PLAYERS' && (
-          <Text>{`${numPlayers}/10 Spots Full`}</Text>
-        )}
-        {availability === 'LOOKING_FOR_PLAYERS' && (
-          <Text>{`Players needed: ${10 - numPlayers}`}</Text>
+        <Text style={styles.availabilityText}>{getAvailabilityText()}</Text>
+        {availability === AVAILABILITY.LOOKING_FOR_PLAYERS && (
+          <>
+            <Text>{`${numPlayers}/10 Spots Full`}</Text>
+            <Text>{`Players needed: ${10 - numPlayers}`}</Text>
+          </>
         )}
         <Button
           title="Sign Up"
@@ -46,7 +62,7 @@ const IndividualCourtScreen = ({courtInfo}) => {
               setNumPlayers(numPlayers + 1);
             }
           }}
-          disabled={availability === 'FULL'}
+          disabled={availability === AVAILABILITY.FULL}
         />
       </View>
     </View>
@@ -89,9 +105,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: availability =>
-      availability === 'AVAILABLE'
+      availability === AVAILABILITY.AVAILABLE
         ? 'green'
-        : availability === 'LOOKING_FOR_PLAYERS'
+        : availability === AVAILABILITY.LOOKING_FOR_PLAYERS
         ? 'orange'
         : 'red',
   },

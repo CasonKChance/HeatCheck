@@ -1,14 +1,17 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {UserAuthProvider} from './context/UserAuthContext';
+import {UserDataProvider} from './context/UserDataContext';
 import MyStack from './navigation/MyStack';
 
 function App() {
   return (
     <UserAuthProvider>
-      <NavigationContainer>
-        <MyStack />
-      </NavigationContainer>
+      <UserDataProvider>
+        <NavigationContainer>
+          <MyStack />
+        </NavigationContainer>
+      </UserDataProvider>
     </UserAuthProvider>
   );
 }

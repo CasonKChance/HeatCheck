@@ -1,14 +1,20 @@
 import React from 'react';
-import {createTabNavigator} from '@react-navigation/stack';
+import HomeScreen from './HomeScreen';
+import PlayerProfileScreen from '../Profile/PlayerProfileScreen';
+import LeaderboardScreen from '../Leaderboard/LeaderboardScreen';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
-const Tab = createTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const HomeNavigation = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Required"
-      screenOptions={{headerShown: false}}
-    />
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{headerShown: false}}>
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Profile" component={PlayerProfileScreen} />
+      <Drawer.Screen name="Leaderboard" component={LeaderboardScreen} />
+    </Drawer.Navigator>
   );
 };
 

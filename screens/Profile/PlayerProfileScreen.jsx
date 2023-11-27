@@ -1,48 +1,28 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import {useUserData} from '../../context/UserDataContext';
 
-/**Example of userInfo to pass in:
-const dummy = {
-    name: 'Charlie',
-    skillRating: 99,
-    position: 'Wing',
-    height: '6ft 3in',
-    weight: '185 lbs',
-    playType: 'Playmaking Sharpshooter',
-    age: 20,
-    profileImage: { uri: 'stripes' }
-};
- */
 const ProfileImage = ({source}) => (
   <Image source={source} style={styles.profileImage} />
 );
 
-const PlayerProfileScreen = ({
-  userInfo: {
-    name,
-    skillRating,
-    position,
-    height,
-    weight,
-    playType,
-    age,
-    profileImage,
-  },
-}) => {
+const PlayerProfileScreen = () => {
+  const {userData, setUserData} = useUserData();
+
   const detailItems = [
-    {label: 'Skill Rating', value: skillRating},
-    {label: 'Position', value: position},
-    {label: 'Height', value: height},
-    {label: 'Weight', value: weight},
-    {label: 'Play Type', value: playType},
-    {label: 'Age', value: age},
+    {label: 'Skill Rating', value: userData.skillRating},
+    {label: 'Position', value: userData.position},
+    {label: 'Height', value: userData.height},
+    {label: 'Weight', value: userData.weight},
+    {label: 'Play Type', value: userData.playType},
+    {label: 'Age', value: userData.age},
   ];
 
   return (
     <View style={styles.container}>
-      <ProfileImage source={profileImage} />
+      <ProfileImage source={null} />
       <View style={styles.infoContainer}>
-        <Text style={styles.nameText}>Name: {name}</Text>
+        <Text style={styles.nameText}>Name: {userData.name}</Text>
         {detailItems.map((item, index) => (
           <Text key={index} style={styles.detailText}>
             {item.label}: {item.value}
