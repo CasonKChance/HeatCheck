@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Button, Image, StyleSheet} from 'react-native';
+import {useRoute} from '@react-navigation/native';
+import BackButton from '../../components/buttons/BackButton';
 
 const AVAILABILITY = {
   AVAILABLE: 'AVAILABLE',
@@ -7,7 +9,9 @@ const AVAILABILITY = {
   FULL: 'FULL',
 };
 
-const IndividualCourtScreen = ({courtInfo}) => {
+const IndividualCourtScreen = ({navigation}) => {
+  const route = useRoute();
+  const {name, address, mapImage} = route.params;
   const [numPlayers, setNumPlayers] = useState(0);
   const [availability, setAvailability] = useState(AVAILABILITY.AVAILABLE);
 
@@ -41,11 +45,11 @@ const IndividualCourtScreen = ({courtInfo}) => {
   return (
     <View style={styles.container}>
       <View style={styles.infoContainer}>
-        <Text style={styles.title}>{courtInfo.name}</Text>
-        <Text style={styles.address}>{courtInfo.address}</Text>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.address}>{address}</Text>
       </View>
 
-      <Image source={courtInfo.mapImage} style={styles.mapImage} />
+      <Image source={mapImage} style={styles.mapImage} />
 
       <View style={styles.availabilityContainer}>
         <Text style={styles.availabilityText}>{getAvailabilityText()}</Text>
@@ -65,6 +69,7 @@ const IndividualCourtScreen = ({courtInfo}) => {
           disabled={availability === AVAILABILITY.FULL}
         />
       </View>
+      <BackButton navigation={navigation} />
     </View>
   );
 };

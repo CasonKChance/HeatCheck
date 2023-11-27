@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import {useUserData} from '../../context/UserDataContext';
 
 import LeaderboardRow from './LeaderboardRow';
 
 const LeaderboardScreen = ({leaderInfo, navigation}) => {
+  const {userData, setUserData} = useUserData();
   const findRank = rank => {
     return leaderInfo.find(player => player.rank === rank);
   };
