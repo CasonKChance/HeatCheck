@@ -22,16 +22,13 @@ const RequiredScreen = ({navigation}) => {
     // Check if all required fields are filled out
     const {firstName, lastName, emailAddress, password, confirmPassword} =
       userData;
-    const allFieldsFilled =
-      firstName && lastName && emailAddress && password && confirmPassword;
-    const isPasswordMatch = password === confirmPassword;
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
     const isPasswordValid =
-      password.length >= 8 && // Minimum length
-      /[A-Z]/.test(password) && // Contains uppercase letters
-      /[a-z]/.test(password) && // Contains lowercase letters
-      /\d/.test(password) && // Contains at least one digit
-      /[!@#$%^&*(),.?":{}|<>]/.test(password); // Contains at least one special character
+      password.length >= 8 &&
+      /[A-Z]/.test(password) &&
+      /[a-z]/.test(password) &&
+      /\d/.test(password) &&
+      /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
     setPasswordError(
       !isPasswordValid
@@ -40,7 +37,14 @@ const RequiredScreen = ({navigation}) => {
     );
     // Update the state to enable/disable the Continue button
     setIsEnabled(
-      allFieldsFilled && isPasswordMatch && isEmailValid && isPasswordValid,
+      firstName &&
+        lastName &&
+        emailAddress &&
+        password &&
+        confirmPassword &&
+        isEmailValid &&
+        isPasswordValid &&
+        password === confirmPassword,
     );
   }, [userData]);
 
@@ -79,65 +83,46 @@ const RequiredScreen = ({navigation}) => {
   const renderInputWithIcon = (
     placeholder,
     fieldName,
-    handleInputChange,
     keyboardType = 'default',
-    secureTextEntry = 'none',
+    secureTextEntry = false,
     onBlur = null,
   ) => {
     return (
       <View style={styles.inputContainer}>
-        {(() => {
-          switch (fieldName) {
-            case 'emailAddress':
-              return (
-                <Icon
-                  name="envelope"
-                  size={20}
-                  color="#000000"
-                  style={{marginRight: '2.5%'}}
-                />
-              );
-            case 'password':
-              return <Icon name="lock" size={20} style={styles.icon} />;
-            case 'firstName':
-              return (
-                <Icon
-                  name="user"
-                  size={20}
-                  color="#000000"
-                  style={{marginRight: '2.5%'}}
-                />
-              );
-            case 'lastName':
-              return (
-                <Icon
-                  name="user"
-                  size={20}
-                  color="#000000"
-                  style={{marginRight: '2.5%'}}
-                />
-              );
-            case 'confirmPassword':
-              return (
-                <Icon
-                  name="lock"
-                  size={20}
-                  color="#000000"
-                  style={{marginRight: '2.5%'}}
-                />
-              );
-            // Add more cases for other field names if needed
-            default:
-              return null; // Or any default icon you want to use
-          }
-        })()}
+        {fieldName === 'emailAddress' && (
+          <Icon
+            name="envelope"
+            size={20}
+            color="#000000"
+            style={{marginRight: '2.5%'}}
+          />
+        )}
+        {fieldName === 'password' && (
+          <Icon name="lock" size={20} style={styles.icon} />
+        )}
+        {fieldName === 'firstName' && (
+          <Icon
+            name="user"
+            size={20}
+            color="#000000"
+            style={{marginRight: '2.5%'}}
+          />
+        )}
+        {fieldName === 'lastName' && (
+          <Icon
+            name="user"
+            size={20}
+            color="#000000"
+            style={{marginRight: '2.5%'}}
+          />
+        )}
         <TextInput
           placeholder={placeholder}
           style={styles.inputField}
           keyboardType={keyboardType}
           autoCapitalize="none"
           onChangeText={text => handleInputChange(fieldName, text)}
-          secureTextEntry={secureTextEntry === 'password'}
+          secureTextEntry={secureTextEntry}
           onBlur={onBlur}
         />
       </View>
@@ -153,21 +138,19 @@ const RequiredScreen = ({navigation}) => {
             <BackButton navigation={navigation} isInitRegister={true} />
           </View>
 
-          {renderInputWithIcon('First Name', 'firstName', handleInputChange)}
-          {renderInputWithIcon('Last Name', 'lastName', handleInputChange)}
+          {renderInputWithIcon('First Name', 'firstName')}
+          {renderInputWithIcon('Last Name', 'lastName')}
           {renderInputWithIcon(
             'Email Address',
             'emailAddress',
-            handleInputChange,
             'email-address',
-            'none',
+            false,
           )}
           {renderInputWithIcon(
             'Password',
             'password',
-            handleInputChange,
             'default',
-            'password',
+            true,
             handlePasswordBlur,
           )}
           {passwordError !== '' && (
@@ -176,10 +159,10 @@ const RequiredScreen = ({navigation}) => {
           {renderInputWithIcon(
             'Confirm Password',
             'confirmPassword',
-            handleInputChange,
             'default',
-            'password',
+            true,
           )}
+
           <TouchableOpacity
             style={[
               styles.continueButton,
@@ -250,7 +233,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     marginBottom: 30,
-    backgroundColor: isEnabled => (isEnabled ? 'rgba(239,35,60,1)' : 'gray'),
   },
   continueButtonText: {
     fontFamily: 'BakbakOne-Regular',
@@ -258,12 +240,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
     fontSize: 16,
-  },
-  otherRegisterText: {
-    fontFamily: 'BakbakOne-Regular',
-    textAlign: 'center',
-    color: 'rgba(43,45,66,1)',
-    marginBottom: 30,
   },
   newUserContainer: {
     flexDirection: 'row',
