@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import BackButton from '../../components/buttons/BackButton';
 import {useUserData} from '../../context/UserDataContext';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   TouchableOpacity,
   View,
@@ -87,15 +86,51 @@ const RequiredScreen = ({navigation}) => {
   ) => {
     return (
       <View style={styles.inputContainer}>
-        {fieldName === 'emailAddress' ? (
-          <MaterialIcons name="alternate-email" size={20} style={styles.icon} />
-        ) : (
-          <Ionicons
-            name="ios-lock-closed-outline"
-            size={20}
-            style={styles.icon}
-          />
-        )}
+        {(() => {
+          switch (fieldName) {
+            case 'emailAddress':
+              return (
+                <Icon
+                  name="envelope"
+                  size={20}
+                  color="#000000"
+                  style={{marginRight: '2.5%'}}
+                />
+              );
+            case 'password':
+              return <Icon name="lock" size={20} style={styles.icon} />;
+            case 'firstName':
+              return (
+                <Icon
+                  name="user"
+                  size={20}
+                  color="#000000"
+                  style={{marginRight: '2.5%'}}
+                />
+              );
+            case 'lastName':
+              return (
+                <Icon
+                  name="user"
+                  size={20}
+                  color="#000000"
+                  style={{marginRight: '2.5%'}}
+                />
+              );
+            case 'confirmPassword':
+              return (
+                <Icon
+                  name="lock"
+                  size={20}
+                  color="#000000"
+                  style={{marginRight: '2.5%'}}
+                />
+              );
+            // Add more cases for other field names if needed
+            default:
+              return null; // Or any default icon you want to use
+          }
+        })()}
         <TextInput
           placeholder={placeholder}
           style={styles.inputField}

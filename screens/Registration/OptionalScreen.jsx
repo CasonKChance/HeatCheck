@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import BackButton from '../../components/buttons/BackButton';
 import ageGroups from './ageGroups';
@@ -14,11 +14,15 @@ import {
   Text,
   SafeAreaView,
   StyleSheet,
+  TextInput,
 } from 'react-native';
 
 const OptionalScreen = ({navigation}) => {
   const {userData, setUserData} = useUserData();
   const {setIsUserAuth} = useUserAuth();
+  const [height, setHeight] = useState(undefined);
+  const [weight, setWeight] = useState(undefined);
+
   const navigateToHome = () => {
     setIsUserAuth(true);
     navigation.dispatch(
@@ -32,18 +36,34 @@ const OptionalScreen = ({navigation}) => {
     return (
       <View style={styles.inputContainer}>
         <Text>{label}</Text>
-        <View style={styles.pickerContainer}>
-          <SelectList
-            setSelected={value => setUserData({...userData, [field]: value})}
-            data={items}
-            save={items.value}
-            fontFamily="BakbakOne-Regular"
-            search={false}
+        {field === 'height' || field === 'weight' ? (
+          <TextInput
+            style={styles.input}
+            value={field === 'height' ? height : weight}
+            onChangeText={value => {
+              if (field === 'height') {
+                setHeight(value);
+              } else {
+                setWeight(value);
+              }
+            }}
+            keyboardType="numeric"
           />
-        </View>
+        ) : (
+          <View style={styles.pickerContainer}>
+            <SelectList
+              setSelected={value => setUserData({...userData, [field]: value})}
+              data={items}
+              save={items.value}
+              fontFamily="BakbakOne-Regular"
+              search={false}
+            />
+          </View>
+        )}
       </View>
     );
   };
+
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView>
@@ -55,6 +75,8 @@ const OptionalScreen = ({navigation}) => {
           {renderPicker('Pick Your Skill Level', 'skillLevel', skillLevels)}
           {renderPicker('Pick Your Age Group', 'ageGroup', ageGroups)}
           {renderPicker('Pick Your Position', 'position', positions)}
+          {renderPicker('Enter Your Height (ft, in)', 'height')}
+          {renderPicker('Enter Your Weight (lbs)', 'weight')}
           <TouchableOpacity
             style={styles.submitButton}
             onPress={navigateToHome}>
