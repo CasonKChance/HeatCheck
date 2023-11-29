@@ -3,7 +3,7 @@ import {View, ScrollView, Text} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import styles from '../../assets/stylesheets/HomeScreenStyles.jsx';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
-import CourtCard from '../../components/buttons/CourtCard.jsx';
+import CourtCard from '../../components/CourtCard.jsx';
 
 const Courts = [
   {
@@ -107,6 +107,7 @@ const HomeScreen = ({navigation}) => {
             image={court.image}
             address={court.address}
             availability={court.availability}
+            navigation={navigation}
           />
         ))}
       </ScrollView>

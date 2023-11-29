@@ -7,12 +7,15 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import {useUserData} from '../../context/UserDataContext';
 
 import LeaderboardRow from './LeaderboardRow';
+import dummy from './LeaderboardDummy';
 
-const LeaderboardScreen = ({leaderInfo, navigation}) => {
+const LeaderboardScreen = ({navigation}) => {
+  const {userData, setUserData} = useUserData();
   const findRank = rank => {
-    return leaderInfo.find(player => player.rank === rank);
+    return dummy.find(player => player.rank === rank);
   };
 
   const renderHeaderColumn = text => (
@@ -30,14 +33,6 @@ const LeaderboardScreen = ({leaderInfo, navigation}) => {
 
   return (
     <ScrollView>
-      <View style={styles.backButtonContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            source={require('../../assets/images/backarrow.png')}
-            style={{width: 20, height: 20}}
-          />
-        </TouchableOpacity>
-      </View>
       <View style={styles.container}>
         {renderHeaderColumn('Rank')}
         {renderHeaderColumn('Name')}
