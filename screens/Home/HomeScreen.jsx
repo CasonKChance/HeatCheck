@@ -78,7 +78,7 @@ const HomeScreen = ({navigation}) => {
     <BackgroundWrapperContainer>
       <View style={styles.page}>
         <View style={styles.mapContainer}>
-          {/* <MapView
+          <MapView
             style={styles.map}
             initialRegion={{
               latitude: 33.775878,
@@ -93,7 +93,7 @@ const HomeScreen = ({navigation}) => {
                 title={marker.title}
               />
             ))}
-          </MapView> */}
+          </MapView>
         </View>
       </View>
       <View style={styles.findGameTitleView}>

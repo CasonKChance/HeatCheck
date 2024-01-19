@@ -86,7 +86,7 @@ const p7 = {
   gamesPlayed: '69',
 };
 const p8 = {
-  name: 'Ventrell',
+  name: 'Jay',
   skillRating: 99,
   position: 'Point Forward',
   height: '6ft 9in',
@@ -98,7 +98,7 @@ const p8 = {
   gamesPlayed: '59',
 };
 const p9 = {
-  name: 'Roquan',
+  name: 'Alex',
   skillRating: 76,
   position: 'Trash',
   height: '6ft 9in',
@@ -110,7 +110,7 @@ const p9 = {
   gamesPlayed: '50',
 };
 const p10 = {
-  name: 'DaJarvis',
+  name: 'Jordan',
   skillRating: 99,
   position: 'Point Forward',
   height: '6ft 9in',
