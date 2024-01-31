@@ -12,22 +12,21 @@ const PrimaryPlaytypeScreen = ({navigation, route}) => {
     setUserData({...userData, ...newUserData});
   };
   const {height} = Dimensions.get('screen');
+  
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView contentContainerStyle={styles.scrollViewContent}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>Select your Primary Playtype</Text>
-        </View>
-        <ScrollView
-          contentContainerStyle={styles.playtypeContainer}
-          style={{marginBottom: height / 5}}>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>Select your Primary Playtype</Text>
+          </View>
           {playTypes.map((playType, index) => (
-            <View key={index}>
+            <View key={index} style={styles.playtypeContainer}>
               <FlippableCard
                 frontContent={playType.name}
                 backContent={playType.description}
                 navigation={navigation}
-                handleUserData={() => updateUserData({playType: playType.name})}
+                handleUserData={() => updateUserData({ playType: playType.name })}
                 userData={userData}
               />
             </View>
@@ -53,17 +52,23 @@ const styles = StyleSheet.create({
     color: '#FF1B1C',
     fontWeight: 'bold',
     fontSize: 26,
-    fontFamily: 'BakBakOne-Regular',
+    fontFamily: 'Optima',
   },
   playtypeContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     flexGrow: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   playtypeCard: {
     margin: 0,
   },
-  scrollViewContent: {flex: 1},
+  scrollViewContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 export default PrimaryPlaytypeScreen;
+

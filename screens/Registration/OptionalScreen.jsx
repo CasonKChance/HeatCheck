@@ -55,7 +55,7 @@ const OptionalScreen = ({navigation}) => {
               setSelected={value => setUserData({...userData, [field]: value})}
               data={items}
               save={items.value}
-              fontFamily="BakbakOne-Regular"
+              fontFamily="Optima"
               search={false}
             />
           </View>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   header: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     fontSize: 28,
     fontWeight: '500',
     marginBottom: 30,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   submitButtonText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
