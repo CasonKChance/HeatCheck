@@ -133,10 +133,8 @@ const RequiredScreen = ({navigation}) => {
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <ScrollView style={styles.container}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>Register</Text>
-            <BackButton navigation={navigation} isInitRegister={true} />
-          </View>
+        <Text style={styles.header}>Register</Text>
+          
 
           {renderInputWithIcon('First Name', 'firstName')}
           {renderInputWithIcon('Last Name', 'lastName')}
