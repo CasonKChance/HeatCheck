@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     transform: [{rotateY: '180deg'}],
   },
   frontText: {
-    fontFamily: 'BakBakOne-Regular',
+    fontFamily: 'Optima',
     fontSize: 25,
   },
   backText: {
