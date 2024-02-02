@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import LoginButton from '../../components/buttons/LoginButton';
 import GetStartedButton from '../../components/buttons/GetStartedButton';
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Graduate-Regular',
     color: 'rgba(0,0,0,1)',
     fontSize: 57,
-    marginTop: 70,
+    marginTop: 45,
     marginBottom: -65,
   },
   heatCheckB: {

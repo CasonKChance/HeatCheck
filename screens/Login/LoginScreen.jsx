@@ -1,7 +1,6 @@
 import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import BackButton from '../../components/buttons/BackButton';
 import {CommonActions} from '@react-navigation/native';
 import {useUserAuth} from '../../context/UserAuthContext';
 import {
@@ -11,6 +10,7 @@ import {
   TextInput,
   SafeAreaView,
   StyleSheet,
+  Image,
 } from 'react-native';
 
 const LoginScreen = ({navigation}) => {
@@ -27,10 +27,10 @@ const LoginScreen = ({navigation}) => {
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <View style={styles.container}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>Login</Text>
-            <BackButton navigation={navigation} isInitRegister={true} />
-          </View>
+        <Image
+          source={require('../../assets/images/logo.png')}
+          style={styles.logo} 
+        />
           {renderInputField('Email Address', 'envelope', 'email-address')}
           {renderInputField('Password', 'lock', 'password', true)}
 
@@ -42,7 +42,7 @@ const LoginScreen = ({navigation}) => {
             <Text style={styles.newUserText}>New to the app?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('Registration')}>
-              <Text style={styles.registerText}>Register</Text>
+              <Text style={styles.registerText}> Register</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -73,9 +73,11 @@ const renderInputField = (placeholder, iconName, keyboardType, isPassword) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 25,
+    justifyContent: "center",
+    alignItems: "center",
   },
   header: {
-    marginTop: 20,
+    marginTop: 140,
     fontFamily: 'BakbakOne-Regular',
     fontSize: 35,
     fontWeight: '500',
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     paddingBottom: 8,
     marginBottom: 30,
+    marginTop: "auto",
     color: 'rgba(43, 45, 66, 1)',
   },
   icon: {
@@ -112,9 +115,9 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: 'rgba(239,35,60,1)',
-    padding: 20,
+    padding: 10,
     borderRadius: 10,
-    marginBottom: 25,
+    marginBottom: 100,
   },
   loginButtonText: {
     fontFamily: 'BakbakOne-Regular',
@@ -140,6 +143,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 18,
     fontFamily: 'BakbakOne-Regular',
+  },
+  logo: {
+    marginTop: 30,
+    width: '100%', // Adjust the width as needed
+    height: 250, // Adjust the height as needed
+    marginBottom: 50,
   },
 });
 
