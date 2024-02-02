@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   login: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     color: 'rgba(255,255,255,1)',
     fontSize: 20,
   },

@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   header: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     fontSize: 28,
     fontWeight: '500',
     marginBottom: 30,
@@ -219,13 +219,13 @@ const styles = StyleSheet.create({
     color: 'rgba(43,45,66,1)',
   },
   inputField: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     flex: 1,
     paddingVertical: 0,
     color: 'rgba(43,45,66,1)',
   },
   errorText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     color: 'red',
     marginBottom: 10,
   },
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   continueButtonText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   newUserText: {
     color: 'rgba(43, 45, 66, 1)',
     fontWeight: '700',
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
   },
   loginLinkText: {
     color: 'rgba(239,35,60,1)',
