@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   header: {
     marginTop: 140,
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     fontSize: 35,
     fontWeight: '500',
     marginBottom: 30,
@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
     marginRight: '2.5%',
   },
   emailField: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     flex: 1,
     paddingVertical: 0,
     color: 'rgba(43,45,66,1)',
   },
   passwordField: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     flex: 1,
     paddingVertical: 0,
     marginBottom: 0,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   loginButtonText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
@@ -136,13 +136,13 @@ const styles = StyleSheet.create({
     color: 'rgba(43, 45, 66, 1)',
     fontWeight: '700',
     fontSize: 20,
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
   },
   registerText: {
     color: 'rgba(239, 35, 60, 1)',
     fontWeight: '700',
     fontSize: 18,
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
   },
   logo: {
     marginTop: 30,

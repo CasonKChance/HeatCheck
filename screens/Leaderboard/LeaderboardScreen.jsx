@@ -4,39 +4,35 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Image,
 } from 'react-native';
-import {useUserData} from '../../context/UserDataContext';
-
+import { useUserData } from '../../context/UserDataContext';
 import LeaderboardRow from './LeaderboardRow';
 import dummy from './LeaderboardDummy';
 
-const LeaderboardScreen = ({navigation}) => {
-  const {userData, setUserData} = useUserData();
-  const findRank = rank => {
-    return dummy.find(player => player.rank === rank);
-  };
+const LeaderboardScreen = ({ navigation }) => {
+  const { userData } = useUserData();
 
-  const renderHeaderColumn = text => (
-    <View style={styles.column}>
+  // Sort the dummy data based on the rank in ascending order
+  const sortedDummy = [...dummy].sort((a, b) => a.rank - b.rank);
+
+  const renderHeaderColumn = (text, flexSize) => (
+    <View style={[styles.column, { flex: flexSize }]}>
       <Text style={styles.header}>{text}</Text>
     </View>
   );
 
   const renderLeaderboardRows = () => {
-    const rankNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-    return rankNumbers.map(rank => (
-      <LeaderboardRow key={rank} player={findRank(rank)} />
+    return sortedDummy.map(player => (
+      <LeaderboardRow key={player.rank.toString()} player={player} />
     ));
   };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {renderHeaderColumn('Rank')}
-        {renderHeaderColumn('Name')}
-        {renderHeaderColumn('Games Played')}
+    <ScrollView style={styles.scrollContainer}>
+      <View style={styles.headerContainer}>
+        {renderHeaderColumn('Rank', 1)}
+        {renderHeaderColumn('Name', 3)}
+        {renderHeaderColumn('Games Played', 2)}
       </View>
       {renderLeaderboardRows()}
     </ScrollView>
@@ -44,26 +40,31 @@ const LeaderboardScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flex: 1,
+  scrollContainer: {
+    backgroundColor: '#ecf0f1',
   },
-  backButtonContainer: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    zIndex: 1,
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    paddingVertical: 20,
+    backgroundColor: '#2ecc71',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 4,
   },
   column: {
-    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#ddd',
-    padding: 20,
+    paddingHorizontal: 10,
   },
   header: {
-    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    fontSize: 16,
   },
 });
 
 export default LeaderboardScreen;
+
+
