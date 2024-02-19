@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import BackButton from '../../components/buttons/BackButton';
 import ageGroups from './ageGroups';
 import positions from './positions';
 import skillLevels from './skillsLevels';
-import {SelectList} from 'react-native-dropdown-select-list';
-import {useUserData} from '../../context/UserDataContext';
-import {useUserAuth} from '../../context/UserAuthContext';
-import {CommonActions} from '@react-navigation/native';
+import { SelectList } from 'react-native-dropdown-select-list';
+import { useUserData } from '../../context/UserDataContext';
+import { useUserAuth } from '../../context/UserAuthContext';
+import { CommonActions } from '@react-navigation/native';
 import {
   TouchableOpacity,
   View,
@@ -15,11 +15,12 @@ import {
   SafeAreaView,
   StyleSheet,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
-const OptionalScreen = ({navigation}) => {
-  const {userData, setUserData} = useUserData();
-  const {setIsUserAuth} = useUserAuth();
+const OptionalScreen = ({ navigation }) => {
+  const { userData, setUserData } = useUserData();
+  const { setIsUserAuth } = useUserAuth();
   const [height, setHeight] = useState(undefined);
   const [weight, setWeight] = useState(undefined);
 
@@ -40,7 +41,7 @@ const OptionalScreen = ({navigation}) => {
           <TextInput
             style={styles.input}
             value={field === 'height' ? height : weight}
-            onChangeText={value => {
+            onChangeText={(value) => {
               if (field === 'height') {
                 setHeight(value);
               } else {
@@ -52,7 +53,9 @@ const OptionalScreen = ({navigation}) => {
         ) : (
           <View style={styles.pickerContainer}>
             <SelectList
-              setSelected={value => setUserData({...userData, [field]: value})}
+              setSelected={(value) =>
+                setUserData({ ...userData, [field]: value })
+              }
               data={items}
               save={items.value}
               fontFamily="Optima"
@@ -66,7 +69,7 @@ const OptionalScreen = ({navigation}) => {
 
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView>
+      <ScrollView>
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Text style={styles.header}>Optional</Text>
@@ -83,56 +86,63 @@ const OptionalScreen = ({navigation}) => {
             <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </ScrollView>
     </BackgroundWrapperContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingHorizontal: 25,
   },
   header: {
     fontFamily: 'Optima',
     fontSize: 28,
     fontWeight: '500',
-    marginBottom: 30,
+    marginBottom: 0,
     color: 'rgba(43,45,66,1)',
-    marginTop: 20,
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 20,
+    marginBottom: 8,
+    paddingTop: 22,
   },
   inputContainer: {
     flexDirection: 'row',
-    alignItems: 'center', // Vertically center items
-    justifyContent: 'space-between', // Space evenly between items
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderBottomWidth: 2,
-    paddingBottom: 8,
-    marginBottom: 25,
+    padding: 8,
+    marginBottom: 0,
     color: 'rgba(43, 45, 66, 1)',
+    paddingBottom: 8,
   },
   pickerContainer: {
-    flex: 1, // Take up all available horizontal space
-    flexDirection: 'row', // Allow items inside pickerContainer to align to the right
-    justifyContent: 'flex-end', // Align items to the right
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   submitButton: {
     backgroundColor: 'rgba(239,35,60,1)',
-    padding: 20,
+    padding: 0,
     borderRadius: 10,
-    marginBottom: 30,
-    justifyContent: 'space-between',
+    marginTop: 15,
+    justifyContent: 'center',
+    height: 40,
   },
   submitButtonText: {
     fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
-    fontSize: 16,
+    fontSize: 25,
+  },
+  input: {
+    borderBottomWidth: 2,
+    paddingBottom: 10,
   },
 });
 

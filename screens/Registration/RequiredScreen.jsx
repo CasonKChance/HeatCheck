@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
-import BackButton from '../../components/buttons/BackButton';
 import {useUserData} from '../../context/UserDataContext';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
@@ -17,6 +16,7 @@ const RequiredScreen = ({navigation}) => {
   const {userData, setUserData} = useUserData();
   const [isEnabled, setIsEnabled] = useState(false);
   const [passwordError, setPasswordError] = useState('');
+
 
   useEffect(() => {
     // Check if all required fields are filled out
@@ -58,19 +58,25 @@ const RequiredScreen = ({navigation}) => {
   const handlePasswordBlur = () => {
     // Validate password and set error message when the user clicks out of the password field
     const {password} = userData;
-    const isPasswordValid =
-      password.length >= 8 &&
-      /[A-Z]/.test(password) &&
-      /[a-z]/.test(password) &&
-      /\d/.test(password) &&
-      /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-    setPasswordError(
-      !isPasswordValid
-        ? 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.'
-        : '',
-    );
+    if (password) { // Check if password is not empty
+      const isPasswordValid =
+        password.length >= 8 &&
+        /[A-Z]/.test(password) &&
+        /[a-z]/.test(password) &&
+        /\d/.test(password) &&
+        /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  
+      setPasswordError(
+        !isPasswordValid
+          ? 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.'
+          : '',
+      );
+    } else {
+      // Optionally clear the password error if the field is empty
+      setPasswordError('');
+    }
   };
+  
 
   const handleContinue = () => {
     if (!isEnabled) {
