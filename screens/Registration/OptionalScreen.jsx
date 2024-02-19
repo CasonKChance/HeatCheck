@@ -21,14 +21,23 @@ import {
 const OptionalScreen = ({ navigation }) => {
   const { userData, setUserData } = useUserData();
   const { setIsUserAuth } = useUserAuth();
-  const [height, setHeight] = useState(undefined);
-  const [weight, setWeight] = useState(undefined);
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
 
   const navigateToHome = () => {
+    // Update userData before navigating
+    setUserData(currentData => ({
+      ...currentData,
+      height: height,
+      weight: weight,
+      skillLevel: userData.skillLevel,
+      ageGroup: userData.ageGroup,
+    }));
+  
     setIsUserAuth(true);
     navigation.dispatch(
       CommonActions.navigate({
-        name: 'Home',
+        name: 'HomeScreen',
       }),
     );
   };
@@ -36,36 +45,40 @@ const OptionalScreen = ({ navigation }) => {
   const renderPicker = (label, field, items) => {
     return (
       <View style={styles.inputContainer}>
-        <Text>{label}</Text>
-        {field === 'height' || field === 'weight' ? (
-          <TextInput
-            style={styles.input}
-            value={field === 'height' ? height : weight}
-            onChangeText={(value) => {
-              if (field === 'height') {
-                setHeight(value);
-              } else {
-                setWeight(value);
-              }
+      <Text>{label}</Text>
+      {field === 'height' || field === 'weight' ? (
+        <TextInput
+          style={styles.input}
+          value={field === 'height' ? height : weight}
+          onChangeText={(value) => {
+            if (field === 'height') {
+              setHeight(value);
+            } else {
+              setWeight(value);
+            }
+          }}
+          keyboardType="numeric"
+          placeholder="Enter value" // Optional, for guiding users
+          textAlign="right" // This ensures text aligns to the right
+        />
+      ) : (
+        <View style={styles.pickerContainer}>
+          <SelectList
+            setSelected={(value) => {
+              console.log(`Selected ${field}:`, value); // Add this console log
+              setUserData(prevUserData => ({ ...prevUserData, [field]: value }));
+              console.log("Updated userData:", userData); // Add this console log
             }}
-            keyboardType="numeric"
+            data={items}
+            save={items.value}
+            fontFamily="Optima"
+            search={false}
           />
-        ) : (
-          <View style={styles.pickerContainer}>
-            <SelectList
-              setSelected={(value) =>
-                setUserData({ ...userData, [field]: value })
-              }
-              data={items}
-              save={items.value}
-              fontFamily="Optima"
-              search={false}
-            />
-          </View>
-        )}
-      </View>
-    );
-  };
+        </View>
+      )}
+    </View>
+  );
+};
 
   return (
     <BackgroundWrapperContainer>
@@ -121,9 +134,9 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   pickerContainer: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   submitButton: {
     backgroundColor: 'rgba(239,35,60,1)',
@@ -141,9 +154,11 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   input: {
-    borderBottomWidth: 2,
-    paddingBottom: 10,
-  },
+    height: 40, // Adjust height to ensure tap-ability
+    // paddingHorizontal: 60, // Adequate horizontal padding for text
+    paddingTop: 10, // Adequate top padding for easier focus
+    paddingBottom: 10, // Bottom padding for visual balance
+  },  
 });
 
 export default OptionalScreen;
