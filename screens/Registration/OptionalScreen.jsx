@@ -45,40 +45,65 @@ const OptionalScreen = ({ navigation }) => {
   const renderPicker = (label, field, items) => {
     return (
       <View style={styles.inputContainer}>
-      <Text>{label}</Text>
-      {field === 'height' || field === 'weight' ? (
-        <TextInput
-          style={styles.input}
-          value={field === 'height' ? height : weight}
-          onChangeText={(value) => {
-            if (field === 'height') {
-              setHeight(value);
-            } else {
-              setWeight(value);
-            }
-          }}
-          keyboardType="numeric"
-          placeholder="Enter value" // Optional, for guiding users
-          textAlign="right" // This ensures text aligns to the right
-        />
-      ) : (
-        <View style={styles.pickerContainer}>
-          <SelectList
-            setSelected={(value) => {
-              console.log(`Selected ${field}:`, value); // Add this console log
-              setUserData(prevUserData => ({ ...prevUserData, [field]: value }));
-              console.log("Updated userData:", userData); // Add this console log
+        <Text>{label}</Text>
+        {field === 'height' || field === 'weight' ? (
+          <TextInput
+            style={styles.input}
+            value={field === 'height' ? height : weight}
+            onChangeText={(value) => {
+              if (field === 'height') {
+                // Validate and format height input
+                const formattedHeight = value ? formatHeightInput(value) : ''; // Format only if value is not empty
+                setHeight(formattedHeight);
+              } else {
+                // Restrict weight input to numeric values only
+                const numericValue = value.replace(/[^0-9]/g, '');
+                setWeight(numericValue);
+              }
             }}
-            data={items}
-            save={items.value}
-            fontFamily="Optima"
-            search={false}
+            
+            
+            keyboardType="numeric"
+            placeholder={field === 'height' ? "E.g. 5'10\"" : "Enter value"}
+            textAlign="right"
           />
-        </View>
-      )}
-    </View>
-  );
+        ) : (
+          <View style={styles.pickerContainer}>
+            <SelectList
+              setSelected={(value) => {
+                setUserData(prevUserData => ({ ...prevUserData, [field]: value }));
+              }}
+              data={items}
+              save={items.value}
+              fontFamily="Optima"
+              search={false}
+            />
+          </View>
+        )}
+      </View>
+    );
+  };
+  
+// Function to format height input as 5'10"
+const formatHeightInput = (input) => {
+  const numericValue = input.replace(/[^0-9]/g, '');
+  let feet = '';
+  let inches = '';
+
+  if (numericValue.length >= 1) {
+    feet = Math.min(parseInt(numericValue[0], 10), 7); // Restrict to [0, 7]
+  }
+  if (numericValue.length >= 2) {
+    inches = Math.min(parseInt(numericValue[1], 10), 1); // Restrict to [0, 1]
+  }
+  if (numericValue.length >= 3) {
+    inches += numericValue.substring(2); // Allow [0, 11]
+    inches = Math.min(parseInt(inches, 10), 11); // Restrict to [0, 11]
+  }
+
+  return `${feet}'${inches}"`;
 };
+
 
   return (
     <BackgroundWrapperContainer>
