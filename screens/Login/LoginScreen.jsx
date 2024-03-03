@@ -63,7 +63,7 @@ const renderInputField = (placeholder, iconName, keyboardType, isPassword) => {
       <TextInput
         placeholder={placeholder}
         style={isPassword ? styles.passwordField : styles.emailField}
-        keyboardType={keyboardType}
+        keyboardType={"default"}
         secureTextEntry={isPassword}
       />
     </View>
