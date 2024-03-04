@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'rgba(237,242,244,1)',
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
   },
 });
 

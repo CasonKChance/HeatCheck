@@ -10,12 +10,12 @@ const PlayerProfileScreen = () => {
   const {userData, setUserData} = useUserData();
 
   const detailItems = [
-    {label: 'Skill Rating', value: userData.skillRating},
+    {label: 'Skill Rating', value: userData.skillLevel},
     {label: 'Position', value: userData.position},
     {label: 'Height', value: userData.height},
     {label: 'Weight', value: userData.weight},
     {label: 'Play Type', value: userData.playType},
-    {label: 'Age', value: userData.age},
+    {label: 'Age', value: userData.ageGroup},
   ];
 
   return (

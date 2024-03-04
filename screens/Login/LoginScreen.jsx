@@ -1,7 +1,6 @@
 import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import BackButton from '../../components/buttons/BackButton';
 import {CommonActions} from '@react-navigation/native';
 import {useUserAuth} from '../../context/UserAuthContext';
 import {
@@ -11,6 +10,7 @@ import {
   TextInput,
   SafeAreaView,
   StyleSheet,
+  Image,
 } from 'react-native';
 
 const LoginScreen = ({navigation}) => {
@@ -27,10 +27,10 @@ const LoginScreen = ({navigation}) => {
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <View style={styles.container}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>Login</Text>
-            <BackButton navigation={navigation} isInitRegister={true} />
-          </View>
+        <Image
+          source={require('../../assets/images/logo.png')}
+          style={styles.logo} 
+        />
           {renderInputField('Email Address', 'envelope', 'email-address')}
           {renderInputField('Password', 'lock', 'password', true)}
 
@@ -42,7 +42,7 @@ const LoginScreen = ({navigation}) => {
             <Text style={styles.newUserText}>New to the app?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('Registration')}>
-              <Text style={styles.registerText}>Register</Text>
+              <Text style={styles.registerText}> Register</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -63,7 +63,7 @@ const renderInputField = (placeholder, iconName, keyboardType, isPassword) => {
       <TextInput
         placeholder={placeholder}
         style={isPassword ? styles.passwordField : styles.emailField}
-        keyboardType={keyboardType}
+        keyboardType={"default"}
         secureTextEntry={isPassword}
       />
     </View>
@@ -73,10 +73,12 @@ const renderInputField = (placeholder, iconName, keyboardType, isPassword) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 25,
+    justifyContent: "center",
+    alignItems: "center",
   },
   header: {
-    marginTop: 20,
-    fontFamily: 'BakbakOne-Regular',
+    marginTop: 140,
+    fontFamily: 'Optima',
     fontSize: 35,
     fontWeight: '500',
     marginBottom: 30,
@@ -93,31 +95,32 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     paddingBottom: 8,
     marginBottom: 30,
+    marginTop: "auto",
     color: 'rgba(43, 45, 66, 1)',
   },
   icon: {
     marginRight: '2.5%',
   },
   emailField: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     flex: 1,
     paddingVertical: 0,
     color: 'rgba(43,45,66,1)',
   },
   passwordField: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     flex: 1,
     paddingVertical: 0,
     marginBottom: 0,
   },
   loginButton: {
     backgroundColor: 'rgba(239,35,60,1)',
-    padding: 20,
+    padding: 10,
     borderRadius: 10,
-    marginBottom: 25,
+    marginBottom: 100,
   },
   loginButtonText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
@@ -133,13 +136,19 @@ const styles = StyleSheet.create({
     color: 'rgba(43, 45, 66, 1)',
     fontWeight: '700',
     fontSize: 20,
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
   },
   registerText: {
     color: 'rgba(239, 35, 60, 1)',
     fontWeight: '700',
     fontSize: 18,
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
+  },
+  logo: {
+    marginTop: 30,
+    width: '100%', // Adjust the width as needed
+    height: 250, // Adjust the height as needed
+    marginBottom: 50,
   },
 });
 

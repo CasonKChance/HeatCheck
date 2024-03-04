@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
-import BackButton from '../../components/buttons/BackButton';
 import {useUserData} from '../../context/UserDataContext';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
@@ -17,6 +16,7 @@ const RequiredScreen = ({navigation}) => {
   const {userData, setUserData} = useUserData();
   const [isEnabled, setIsEnabled] = useState(false);
   const [passwordError, setPasswordError] = useState('');
+
 
   useEffect(() => {
     // Check if all required fields are filled out
@@ -58,19 +58,25 @@ const RequiredScreen = ({navigation}) => {
   const handlePasswordBlur = () => {
     // Validate password and set error message when the user clicks out of the password field
     const {password} = userData;
-    const isPasswordValid =
-      password.length >= 8 &&
-      /[A-Z]/.test(password) &&
-      /[a-z]/.test(password) &&
-      /\d/.test(password) &&
-      /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-    setPasswordError(
-      !isPasswordValid
-        ? 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.'
-        : '',
-    );
+    if (password) { // Check if password is not empty
+      const isPasswordValid =
+        password.length >= 8 &&
+        /[A-Z]/.test(password) &&
+        /[a-z]/.test(password) &&
+        /\d/.test(password) &&
+        /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  
+      setPasswordError(
+        !isPasswordValid
+          ? 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.'
+          : '',
+      );
+    } else {
+      // Optionally clear the password error if the field is empty
+      setPasswordError('');
+    }
   };
+  
 
   const handleContinue = () => {
     if (!isEnabled) {
@@ -133,10 +139,8 @@ const RequiredScreen = ({navigation}) => {
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <ScrollView style={styles.container}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>Register</Text>
-            <BackButton navigation={navigation} isInitRegister={true} />
-          </View>
+        <Text style={styles.header}>Register</Text>
+          
 
           {renderInputWithIcon('First Name', 'firstName')}
           {renderInputWithIcon('Last Name', 'lastName')}
@@ -194,7 +198,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   header: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     fontSize: 28,
     fontWeight: '500',
     marginBottom: 30,
@@ -219,13 +223,13 @@ const styles = StyleSheet.create({
     color: 'rgba(43,45,66,1)',
   },
   inputField: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     flex: 1,
     paddingVertical: 0,
     color: 'rgba(43,45,66,1)',
   },
   errorText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     color: 'red',
     marginBottom: 10,
   },
@@ -235,7 +239,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   continueButtonText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
@@ -249,7 +253,7 @@ const styles = StyleSheet.create({
   newUserText: {
     color: 'rgba(43, 45, 66, 1)',
     fontWeight: '700',
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
   },
   loginLinkText: {
     color: 'rgba(239,35,60,1)',

@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import BackButton from '../../components/buttons/BackButton';
 import ageGroups from './ageGroups';
 import positions from './positions';
 import skillLevels from './skillsLevels';
-import {SelectList} from 'react-native-dropdown-select-list';
-import {useUserData} from '../../context/UserDataContext';
-import {useUserAuth} from '../../context/UserAuthContext';
-import {CommonActions} from '@react-navigation/native';
+import { SelectList } from 'react-native-dropdown-select-list';
+import { useUserData } from '../../context/UserDataContext';
+import { useUserAuth } from '../../context/UserAuthContext';
+import { CommonActions } from '@react-navigation/native';
 import {
   TouchableOpacity,
   View,
@@ -15,19 +15,29 @@ import {
   SafeAreaView,
   StyleSheet,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
-const OptionalScreen = ({navigation}) => {
-  const {userData, setUserData} = useUserData();
-  const {setIsUserAuth} = useUserAuth();
-  const [height, setHeight] = useState(undefined);
-  const [weight, setWeight] = useState(undefined);
+const OptionalScreen = ({ navigation }) => {
+  const { userData, setUserData } = useUserData();
+  const { setIsUserAuth } = useUserAuth();
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
 
   const navigateToHome = () => {
+    // Update userData before navigating
+    setUserData(currentData => ({
+      ...currentData,
+      height: height,
+      weight: weight,
+      skillLevel: userData.skillLevel,
+      ageGroup: userData.ageGroup,
+    }));
+  
     setIsUserAuth(true);
     navigation.dispatch(
       CommonActions.navigate({
-        name: 'Home',
+        name: 'HomeScreen',
       }),
     );
   };
@@ -40,22 +50,32 @@ const OptionalScreen = ({navigation}) => {
           <TextInput
             style={styles.input}
             value={field === 'height' ? height : weight}
-            onChangeText={value => {
+            onChangeText={(value) => {
               if (field === 'height') {
-                setHeight(value);
+                // Validate and format height input
+                const formattedHeight = value ? formatHeightInput(value) : ''; // Format only if value is not empty
+                setHeight(formattedHeight);
               } else {
-                setWeight(value);
+                // Restrict weight input to numeric values only
+                const numericValue = value.replace(/[^0-9]/g, '');
+                setWeight(numericValue);
               }
             }}
+            
+            
             keyboardType="numeric"
+            placeholder={field === 'height' ? "E.g. 5'10\"" : "Enter value"}
+            textAlign="right"
           />
         ) : (
           <View style={styles.pickerContainer}>
             <SelectList
-              setSelected={value => setUserData({...userData, [field]: value})}
+              setSelected={(value) => {
+                setUserData(prevUserData => ({ ...prevUserData, [field]: value }));
+              }}
               data={items}
               save={items.value}
-              fontFamily="BakbakOne-Regular"
+              fontFamily="Optima"
               search={false}
             />
           </View>
@@ -63,10 +83,31 @@ const OptionalScreen = ({navigation}) => {
       </View>
     );
   };
+  
+// Function to format height input as 5'10"
+const formatHeightInput = (input) => {
+  const numericValue = input.replace(/[^0-9]/g, '');
+  let feet = '';
+  let inches = '';
+
+  if (numericValue.length >= 1) {
+    feet = Math.min(parseInt(numericValue[0], 10), 7); // Restrict to [0, 7]
+  }
+  if (numericValue.length >= 2) {
+    inches = Math.min(parseInt(numericValue[1], 10), 1); // Restrict to [0, 1]
+  }
+  if (numericValue.length >= 3) {
+    inches += numericValue.substring(2); // Allow [0, 11]
+    inches = Math.min(parseInt(inches, 10), 11); // Restrict to [0, 11]
+  }
+
+  return `${feet}'${inches}"`;
+};
+
 
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView>
+      <ScrollView>
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Text style={styles.header}>Optional</Text>
@@ -83,57 +124,66 @@ const OptionalScreen = ({navigation}) => {
             <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </ScrollView>
     </BackgroundWrapperContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingHorizontal: 25,
   },
   header: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     fontSize: 28,
     fontWeight: '500',
-    marginBottom: 30,
+    marginBottom: 0,
     color: 'rgba(43,45,66,1)',
-    marginTop: 20,
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 20,
+    marginBottom: 8,
+    paddingTop: 22,
   },
   inputContainer: {
     flexDirection: 'row',
-    alignItems: 'center', // Vertically center items
-    justifyContent: 'space-between', // Space evenly between items
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderBottomWidth: 2,
-    paddingBottom: 8,
-    marginBottom: 25,
+    padding: 8,
+    marginBottom: 0,
     color: 'rgba(43, 45, 66, 1)',
+    paddingBottom: 8,
   },
   pickerContainer: {
-    flex: 1, // Take up all available horizontal space
-    flexDirection: 'row', // Allow items inside pickerContainer to align to the right
-    justifyContent: 'flex-end', // Align items to the right
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   submitButton: {
     backgroundColor: 'rgba(239,35,60,1)',
-    padding: 20,
+    padding: 0,
     borderRadius: 10,
-    marginBottom: 30,
-    justifyContent: 'space-between',
+    marginTop: 15,
+    justifyContent: 'center',
+    height: 40,
   },
   submitButtonText: {
-    fontFamily: 'BakbakOne-Regular',
+    fontFamily: 'Optima',
     textAlign: 'center',
     fontWeight: '700',
     color: 'rgba(237,242,244,1)',
-    fontSize: 16,
+    fontSize: 25,
   },
+  input: {
+    height: 40, // Adjust height to ensure tap-ability
+    // paddingHorizontal: 60, // Adequate horizontal padding for text
+    paddingTop: 10, // Adequate top padding for easier focus
+    paddingBottom: 10, // Bottom padding for visual balance
+  },  
 });
 
 export default OptionalScreen;

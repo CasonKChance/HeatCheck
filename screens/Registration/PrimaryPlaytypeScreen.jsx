@@ -1,37 +1,54 @@
 import React from 'react';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
-import FlippableCard from '../../components/wrappers/FlippableCard';
-import {useUserData} from '../../context/UserDataContext';
-import {View, Text, StyleSheet, ScrollView, Dimensions} from 'react-native';
-import playTypes from './playTypes';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { useUserData } from '../../context/UserDataContext';
+import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import SharpShooter from '../../components/archetypeCards/SharpShooter';
+import ShotCreating from '../../components/archetypeCards/ShotCreating';
+import Playmaking from '../../components/archetypeCards/PlayMaking';
+import Slashing from '../../components/archetypeCards/Slashing';
+import PostScoring from '../../components/archetypeCards/PostScoring';
+import Defending from '../../components/archetypeCards/Defending';
+import GlassCleaning from '../../components/archetypeCards/GlassCleaning';
 
-const PrimaryPlaytypeScreen = ({navigation, route}) => {
-  const {userData, setUserData} = useUserData();
-  const updateUserData = newUserData => {
-    setUserData({...userData, ...newUserData});
+const PrimaryPlaytypeScreen = ({ navigation }) => {
+  const { userData, setUserData } = useUserData();
+  
+  const handleSelectPlaytype = (playtype) => {
+    setUserData({ ...userData, primaryPlayType: playtype });
+    navigation.navigate('Optional', { userData: { ...userData, primaryPlayType: playtype } });
   };
-  const {height} = Dimensions.get('screen');
+
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView contentContainerStyle={styles.scrollViewContent}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>Select your Primary Playtype</Text>
-        </View>
-        <ScrollView
-          contentContainerStyle={styles.playtypeContainer}
-          style={{marginBottom: height / 5}}>
-          {playTypes.map((playType, index) => (
-            <View key={index}>
-              <FlippableCard
-                frontContent={playType.name}
-                backContent={playType.description}
-                navigation={navigation}
-                handleUserData={() => updateUserData({playType: playType.name})}
-                userData={userData}
-              />
+      <SafeAreaView>
+        <ScrollView>
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>Select your Primary Playtype</Text>
+          </View>
+          <View style={styles.playtypeContainer}>
+            <View style={styles.cardContainer}>
+              <ShotCreating onSelectPlaytype={() => handleSelectPlaytype('ShotCreating')} />
             </View>
-          ))}
+            <View style={styles.cardContainer}>
+              <SharpShooter onSelectPlaytype={() => handleSelectPlaytype('SharpShooter')} />
+            </View>
+            <View style={styles.cardContainer}>
+              <Playmaking onSelectPlaytype={() => handleSelectPlaytype('Playmaking')} />
+            </View>
+            <View style={styles.cardContainer}>
+              <Slashing onSelectPlaytype={() => handleSelectPlaytype('Slashing')} />
+            </View>
+            <View style={styles.cardContainer}>
+              <PostScoring onSelectPlaytype={() => handleSelectPlaytype('PostScoring')} />
+            </View>
+            <View style={styles.cardContainer}>
+              <Defending onSelectPlaytype={() => handleSelectPlaytype('Defending')} />
+            </View>
+            <View style={styles.cardContainer}>
+              <GlassCleaning onSelectPlaytype={() => handleSelectPlaytype('GlassCleaning')} />
+            </View>
+          </View>
         </ScrollView>
       </SafeAreaView>
     </BackgroundWrapperContainer>
@@ -53,17 +70,27 @@ const styles = StyleSheet.create({
     color: '#FF1B1C',
     fontWeight: 'bold',
     fontSize: 26,
-    fontFamily: 'BakBakOne-Regular',
+    fontFamily: 'Optima',
   },
   playtypeContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     flexGrow: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  playtypeCard: {
-    margin: 0,
+
+  scrollViewContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  scrollViewContent: {flex: 1},
+
+  cardContainer: {
+    marginBottom: 10,
+    padding: 15,
+  },
+
 });
 export default PrimaryPlaytypeScreen;
+

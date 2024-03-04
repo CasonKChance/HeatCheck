@@ -75,43 +75,48 @@ const HomeScreen = ({navigation}) => {
   const [markers, setMarkers] = useState(Markers);
 
   return (
-    <BackgroundWrapperContainer>
-      <View style={styles.page}>
-        <View style={styles.mapContainer}>
-          {/* <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: 33.775878,
-              longitude: -84.393301,
-              latitudeDelta: 0.03,
-              longitudeDelta: 0.03,
-            }}>
-            {markers.map((marker, index) => (
-              <Marker
-                key={index}
-                coordinate={marker.latlng}
-                title={marker.title}
-              />
-            ))}
-          </MapView> */}
+    <View style={{ flex: 1 }}>
+      <BackgroundWrapperContainer>
+        <View style={styles.page}>
+          <View style={styles.mapContainer}>
+            <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: 33.775878,
+                longitude: -84.393301,
+                latitudeDelta: 0.03,
+                longitudeDelta: 0.03,
+              }}>
+              {markers.map((marker, index) => (
+                <Marker
+                  key={index}
+                  coordinate={marker.latlng}
+                  title={marker.title}
+                />
+              ))}
+            </MapView>
+          </View>
         </View>
-      </View>
-      <View style={styles.findGameTitleView}>
-        <Text style={styles.findGameTitleText}>Find A Game</Text>
-      </View>
-      <ScrollView style={styles.findGameMainView}>
-        {courts.map((court, index) => (
-          <CourtCard
-            key={index}
-            title={court.title}
-            image={court.image}
-            address={court.address}
-            availability={court.availability}
-            navigation={navigation}
-          />
-        ))}
-      </ScrollView>
-    </BackgroundWrapperContainer>
+        <View style={styles.findGameTitleView}>
+          <Text style={styles.findGameTitleText}>Find A Game</Text>
+        </View>
+        <ScrollView 
+          style={styles.findGameMainView}
+          contentContainerStyle={{ flexGrow: 1}}
+          >
+          {courts.map((court, index) => (
+            <CourtCard
+              key={index}
+              title={court.title}
+              image={court.image}
+              address={court.address}
+              availability={court.availability}
+              navigation={navigation}
+            />
+          ))}
+        </ScrollView>
+      </BackgroundWrapperContainer>
+    </View>
   );
 };
 
