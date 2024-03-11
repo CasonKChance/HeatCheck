@@ -33,7 +33,7 @@ const OptionalScreen = ({ navigation }) => {
       skillLevel: userData.skillLevel,
       ageGroup: userData.ageGroup,
     }));
-  
+
     setIsUserAuth(true);
     navigation.dispatch(
       CommonActions.navigate({
@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     justifyContent: 'center',
     height: 40,
+    marginBottom: 20,
   },
   submitButtonText: {
     fontFamily: 'Optima',
