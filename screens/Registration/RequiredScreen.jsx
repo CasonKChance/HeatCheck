@@ -178,7 +178,7 @@ const RequiredScreen = ({navigation}) => {
 
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={[styles.container, {paddingHorizontal: 25}]}>
         <Text style={styles.header}>Register</Text>
           {renderInputWithIcon('First Name', 'firstName')}
           {renderInputWithIcon('Last Name', 'lastName')}

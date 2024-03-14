@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Alert } from 'react-native';
 import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {CommonActions} from '@react-navigation/native';
-import {useUserAuth} from '../../context/UserAuthContext';
+import { CommonActions } from '@react-navigation/native';
+import { useUserAuth } from '../../context/UserAuthContext';
 import {
   TouchableOpacity,
   View,
@@ -13,24 +14,75 @@ import {
   Image,
 } from 'react-native';
 
-const LoginScreen = ({navigation}) => {
-  const {setIsUserAuth} = useUserAuth();
+const LoginScreen = ({ navigation }) => {
+  const { setIsUserAuth } = useUserAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigateToHome = () => {
+    if (!validateEmail(email)) {
+      showAlert('Invalid Email', 'Please enter a valid email address.');
+      return;
+    }
+    if (!validatePassword(password)) {
+      showAlert(
+        'Invalid Password',
+        'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.'
+      );
+      return;
+    }
+
     setIsUserAuth(true);
     navigation.dispatch(
       CommonActions.navigate({
-        name: 'Home', // Replace with the name of the screen you want to navigate to in the parent navigator
-      }),
+        name: 'Home',
+      })
     );
   };
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+  const showAlert = (title, message) => {
+    Alert.alert(title, message, [{ text: 'OK' }], { cancelable: true });
+  };
+
+  const renderInputField = (placeholder, iconName, keyboardType, isPassword) => {
+    return (
+      <View style={styles.inputContainer}>
+        <Icon
+          name={iconName}
+          size={iconName === 'lock' ? 30 : 20}
+          color="#000000"
+          style={styles.icon}
+        />
+        <TextInput
+          placeholder={placeholder}
+          style={isPassword ? styles.passwordField : styles.emailField}
+          keyboardType={"default"}
+          secureTextEntry={isPassword}
+          onChangeText={(text) => {
+            isPassword ? setPassword(text) : setEmail(text);
+          }}
+        />
+      </View>
+    );
+  };
+
   return (
     <BackgroundWrapperContainer>
       <SafeAreaView>
         <View style={styles.container}>
-        <Image
-          source={require('../../assets/images/logo.png')}
-          style={styles.logo} 
-        />
+          <Image
+            source={require('../../assets/images/logo.png')}
+            style={styles.logo}
+          />
           {renderInputField('Email Address', 'envelope', 'email-address')}
           {renderInputField('Password', 'lock', 'password', true)}
 
@@ -48,25 +100,6 @@ const LoginScreen = ({navigation}) => {
         </View>
       </SafeAreaView>
     </BackgroundWrapperContainer>
-  );
-};
-
-const renderInputField = (placeholder, iconName, keyboardType, isPassword) => {
-  return (
-    <View style={styles.inputContainer}>
-      <Icon
-        name={iconName}
-        size={iconName === 'lock' ? 30 : 20}
-        color="#000000"
-        style={styles.icon}
-      />
-      <TextInput
-        placeholder={placeholder}
-        style={isPassword ? styles.passwordField : styles.emailField}
-        keyboardType={"default"}
-        secureTextEntry={isPassword}
-      />
-    </View>
   );
 };
 
