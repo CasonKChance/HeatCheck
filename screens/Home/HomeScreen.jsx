@@ -1,39 +1,40 @@
-import React, {useState} from 'react';
-import {View, ScrollView, Text} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
-import styles from '../../assets/stylesheets/HomeScreenStyles.jsx';
-import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrapperContainer';
-import CourtCard from '../../components/CourtCard.jsx';
+import React, { useState, useEffect } from "react";
+import { View, ScrollView, Text } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import styles from "../../assets/stylesheets/HomeScreenStyles.jsx";
+import BackgroundWrapperContainer from "../../components/wrappers/BackgroundWrapperContainer";
+import CourtCard from "../../components/CourtCard.jsx";
+import axios from "axios";
 
 const Courts = [
   {
-    title: 'McCamish Pavilion',
-    image: require('../../assets/images/MccamishCourt.png'),
-    address: '965 Fowler St NW, Atlanta, GA 30318',
-    availability: 'Available',
+    title: "McCamish Pavilion",
+    image: require("../../assets/images/MccamishCourt.png"),
+    address: "965 Fowler St NW, Atlanta, GA 30318",
+    availability: "Available",
   },
   {
-    title: 'State Farm Arena',
-    image: require('../../assets/images/StateFarmArena.png'),
-    address: '1 State Farm Dr, Atlanta, GA 30303',
-    availability: 'Available',
+    title: "State Farm Arena",
+    image: require("../../assets/images/StateFarmArena.png"),
+    address: "1 State Farm Dr, Atlanta, GA 30303",
+    availability: "Available",
   },
   {
-    title: 'Georgia Tech CRC',
-    image: require('../../assets/images/CRC.png'),
-    address: '750 Ferst Dr, Atlanta, GA 30332',
-    availability: 'Looking For Players',
+    title: "Georgia Tech CRC",
+    image: require("../../assets/images/CRC.png"),
+    address: "750 Ferst Dr, Atlanta, GA 30332",
+    availability: "Looking For Players",
   },
   {
-    title: 'Peters Parking Deck',
-    image: require('../../assets/images/Peters.png'),
-    address: '741 Fowler St NW, Atlanta, GA 30332',
-    availability: 'Full',
+    title: "Peters Parking Deck",
+    image: require("../../assets/images/Peters.png"),
+    address: "741 Fowler St NW, Atlanta, GA 30332",
+    availability: "Full",
   },
 ];
 const Markers = [
   {
-    title: 'McCamish Pavilion',
+    title: "McCamish Pavilion",
     latlng: {
       latitude: 33.7806025,
       longitude: -84.3927616,
@@ -42,7 +43,7 @@ const Markers = [
     },
   },
   {
-    title: 'State Farm Arena',
+    title: "State Farm Arena",
     latlng: {
       latitude: 33.7573698,
       longitude: -84.3963848,
@@ -51,7 +52,7 @@ const Markers = [
     },
   },
   {
-    title: 'Georgia Tech CRC',
+    title: "Georgia Tech CRC",
     latlng: {
       latitude: 33.7756119,
       longitude: -84.4039289,
@@ -60,7 +61,7 @@ const Markers = [
     },
   },
   {
-    title: 'Peters Parking Deck',
+    title: "Peters Parking Deck",
     latlng: {
       latitude: 33.7747431,
       longitude: -84.3937263,
@@ -70,9 +71,48 @@ const Markers = [
   },
 ];
 
-const HomeScreen = ({navigation}) => {
-  const [courts, setCourts] = useState(Courts);
-  const [markers, setMarkers] = useState(Markers);
+const HomeScreen = ({ navigation }) => {
+  const [courts, setCourts] = useState([]);
+  const [markers, setMarkers] = useState([]);
+
+  useEffect(() => {
+    const fetchCourts = async () => {
+      try {
+        // Update the URL to match your Django server endpoint for fetching court data
+        const response = await axios.get(
+          "http://localhost:8000/your-courts-endpoint/"
+        );
+
+        const fetchedCourts = response.data.map((court) => ({
+          title: court.title,
+          // Assume you have an images base URL and court_image is just the path
+          image: {
+            uri: `http://localhost:8000/path-to-images/${court.court_image}`,
+          },
+          address: court.address,
+          availability: court.availability,
+        }));
+
+        const fetchedMarkers = response.data.map((court) => ({
+          title: court.title,
+          latlng: {
+            latitude: court.latitude,
+            longitude: court.longitude,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
+          },
+        }));
+
+        setCourts(fetchedCourts);
+        setMarkers(fetchedMarkers);
+      } catch (error) {
+        console.log(error);
+        Alert.alert("Error", "Could not fetch courts");
+      }
+    };
+
+    fetchCourts();
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -86,7 +126,8 @@ const HomeScreen = ({navigation}) => {
                 longitude: -84.393301,
                 latitudeDelta: 0.03,
                 longitudeDelta: 0.03,
-              }}>
+              }}
+            >
               {markers.map((marker, index) => (
                 <Marker
                   key={index}
@@ -100,10 +141,10 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.findGameTitleView}>
           <Text style={styles.findGameTitleText}>Find A Game</Text>
         </View>
-        <ScrollView 
+        <ScrollView
           style={styles.findGameMainView}
-          contentContainerStyle={{ flexGrow: 1}}
-          >
+          contentContainerStyle={{ flexGrow: 1 }}
+        >
           {courts.map((court, index) => (
             <CourtCard
               key={index}
