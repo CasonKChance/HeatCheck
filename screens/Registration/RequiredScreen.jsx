@@ -3,6 +3,7 @@ import BackgroundWrapperContainer from '../../components/wrappers/BackgroundWrap
 import {useUserData} from '../../context/UserDataContext';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
+  Alert,
   TouchableOpacity,
   View,
   Text,
@@ -78,13 +79,53 @@ const RequiredScreen = ({navigation}) => {
   };
   
 
+  // const handleContinue = () => {
+  //   if (!isEnabled) {
+  //     setPasswordError('Please fix the errors before continuing.'); // Show a general error message
+  //   } else {
+  //     navigation.navigate('Playtype', {userData});
+  //   }
+  // };
+
   const handleContinue = () => {
-    if (!isEnabled) {
-      setPasswordError('Please fix the errors before continuing.'); // Show a general error message
-    } else {
-      navigation.navigate('Playtype', {userData});
+    const {firstName, lastName, emailAddress, password, confirmPassword} = userData;
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
+    const isPasswordValid =
+      password.length >= 8 &&
+      /[A-Z]/.test(password) &&
+      /[a-z]/.test(password) &&
+      /\d/.test(password) &&
+      /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    // Check if all required fields are filled out
+    if (!firstName || !lastName || !emailAddress || !password || !confirmPassword) {
+      Alert.alert('Incomplete Fields', 'Please make sure all fields are filled.');
+      return;
     }
-  };
+
+    // Validate Email
+    if (!isEmailValid) {
+      Alert.alert('Invalid Email', 'Please enter a valid email address.');
+      return;
+    }
+
+    // Validate Password
+    if (!isPasswordValid) {
+      Alert.alert('Invalid Password', 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.');
+      return;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      Alert.alert('Password Mismatch', 'The passwords do not match. Please check and try again.');
+      return;
+    }
+
+    // If all checks pass, navigate to the next screen
+    navigation.navigate('Playtype', {userData});
+};
+
+  
 
   const renderInputWithIcon = (
     placeholder,
@@ -137,11 +178,8 @@ const RequiredScreen = ({navigation}) => {
 
   return (
     <BackgroundWrapperContainer>
-      <SafeAreaView>
-        <ScrollView style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.header}>Register</Text>
-          
-
           {renderInputWithIcon('First Name', 'firstName')}
           {renderInputWithIcon('Last Name', 'lastName')}
           {renderInputWithIcon(
@@ -171,12 +209,12 @@ const RequiredScreen = ({navigation}) => {
             style={[
               styles.continueButton,
               {
-                backgroundColor: isEnabled ? 'rgba(239,35,60,1)' : 'gray',
+                backgroundColor: 'rgba(239,35,60,1)',
               },
             ]}
             onPress={handleContinue}
-            disabled={!isEnabled}>
-            <Text style={styles.continueButtonText}>Continue</Text>
+            >
+          <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
           <View style={styles.newUserContainer}>
             <Text style={styles.newUserText}>Already registered?</Text>
@@ -187,7 +225,6 @@ const RequiredScreen = ({navigation}) => {
               <Text style={styles.loginLinkText}>Login</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
       </SafeAreaView>
     </BackgroundWrapperContainer>
   );
@@ -199,17 +236,17 @@ const styles = StyleSheet.create({
   },
   header: {
     fontFamily: 'Optima',
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: '500',
     marginBottom: 30,
     color: 'rgba(43,45,66,1)',
-    marginTop: 20,
+    marginTop: 0,
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 20,
+    marginTop: 0,
   },
   inputContainer: {
     flexDirection: 'row',

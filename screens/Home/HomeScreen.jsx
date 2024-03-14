@@ -79,22 +79,22 @@ const HomeScreen = ({navigation}) => {
       <BackgroundWrapperContainer>
         <View style={styles.page}>
           <View style={styles.mapContainer}>
-            <MapView
-              style={styles.map}
-              initialRegion={{
-                latitude: 33.775878,
-                longitude: -84.393301,
-                latitudeDelta: 0.03,
-                longitudeDelta: 0.03,
-              }}>
-              {markers.map((marker, index) => (
-                <Marker
-                  key={index}
-                  coordinate={marker.latlng}
-                  title={marker.title}
-                />
-              ))}
-            </MapView>
+              <MapView
+                style={{flex: 1, borderRadius: 15}}
+                initialRegion={{
+                  latitude: 33.775878,
+                  longitude: -84.393301,
+                  latitudeDelta: 0.03,
+                  longitudeDelta: 0.03,
+                }}>
+                {markers.map((marker, index) => (
+                  <Marker
+                    key={index}
+                    coordinate={marker.latlng}
+                    title={marker.title}
+                  />
+                ))}
+              </MapView>
           </View>
         </View>
         <View style={styles.findGameTitleView}>
