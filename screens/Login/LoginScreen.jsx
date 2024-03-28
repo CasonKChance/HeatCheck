@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BackgroundWrapperContainer from "../../components/wrappers/BackgroundWrapperContainer";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CommonActions } from "@react-navigation/native";
@@ -11,10 +11,41 @@ import {
   SafeAreaView,
   StyleSheet,
   Image,
+  Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 const LoginScreen = ({ navigation }) => {
   const { setIsUserAuth } = useUserAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    checkLoginState();
+  }, []);
+
+  const storeLoginState = async (token) => {
+    try {
+      await AsyncStorage.setItem("userToken", token); // Use 'true' or a session token as a value
+      setIsUserAuth(true);
+    } catch (error) {
+      console.error("AsyncStorage error: ", error.message);
+    }
+  };
+
+  const checkLoginState = async () => {
+    try {
+      const token = await AsyncStorage.getItem("userToken");
+      if (token !== null) {
+        setIsUserAuth(true);
+        navigation.dispatch(CommonActions.navigate({ name: "Home" }));
+      }
+    } catch (error) {
+      console.error("AsyncStorage error: ", error.message);
+    }
+  };
+
   const navigateToHome = async () => {
     try {
       const response = await axios.post(
@@ -33,6 +64,7 @@ const LoginScreen = ({ navigation }) => {
       // If the server responds with a success status, proceed to the Home screen
       if (response.status === 200 || response.status === 201) {
         setIsUserAuth(true);
+        storeLoginState(response.data.token);
         navigation.dispatch(CommonActions.navigate({ name: "Home" }));
       } else {
         // Handle unsuccessful login attempts here
@@ -62,9 +94,17 @@ const LoginScreen = ({ navigation }) => {
             "envelope",
             "email-address",
             false,
-            setEmail
+            setEmail,
+            email
           )}
-          {renderInputField("Password", "lock", "default", true, setPassword)}
+          {renderInputField(
+            "Password",
+            "lock",
+            "default",
+            true,
+            setPassword,
+            password
+          )}
           <TouchableOpacity style={styles.loginButton} onPress={navigateToHome}>
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
@@ -88,7 +128,8 @@ const renderInputField = (
   iconName,
   keyboardType,
   isPassword,
-  setState
+  setState,
+  emailOrPassword
 ) => (
   <View style={styles.inputContainer}>
     <Icon
@@ -105,7 +146,7 @@ const renderInputField = (
       }
       secureTextEntry={isPassword}
       onChangeText={setState}
-      value={isPassword ? password : email}
+      value={emailOrPassword}
     />
   </View>
 );
