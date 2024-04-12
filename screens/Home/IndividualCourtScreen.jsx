@@ -1,17 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, Button, Image, StyleSheet} from 'react-native';
-import {useRoute} from '@react-navigation/native';
-import BackButton from '../../components/buttons/BackButton';
+import React, { useState, useEffect } from "react";
+import { View, Text, Button, Image, StyleSheet, Alert } from "react-native";
+import { useRoute } from "@react-navigation/native";
+import BackButton from "../../components/buttons/BackButton";
+import axios from "axios";
 
 const AVAILABILITY = {
-  AVAILABLE: 'AVAILABLE',
-  LOOKING_FOR_PLAYERS: 'LOOKING_FOR_PLAYERS',
-  FULL: 'FULL',
+  AVAILABLE: "AVAILABLE",
+  LOOKING_FOR_PLAYERS: "LOOKING_FOR_PLAYERS",
+  FULL: "FULL",
 };
 
-const IndividualCourtScreen = ({navigation}) => {
+const IndividualCourtScreen = ({ navigation }) => {
   const route = useRoute();
-  const {name, address, mapImage} = route.params;
+  const { name, address, mapImage } = route.params;
   const [numPlayers, setNumPlayers] = useState(0);
   const [availability, setAvailability] = useState(AVAILABILITY.AVAILABLE);
 
@@ -32,13 +33,36 @@ const IndividualCourtScreen = ({navigation}) => {
   const getAvailabilityText = () => {
     switch (availability) {
       case AVAILABILITY.AVAILABLE:
-        return 'Available';
+        return "Available";
       case AVAILABILITY.LOOKING_FOR_PLAYERS:
-        return 'Looking for Players';
+        return "Looking for Players";
       case AVAILABILITY.FULL:
-        return 'Full';
+        return "Full";
       default:
-        return '';
+        return "";
+    }
+  };
+
+  const joinOrCreateGame = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/games/join-or-create-game/",
+        {
+          court_id: courtId,
+        }
+      );
+
+      if (response.status === 201) {
+        setPlayersCount(response.data.players_count);
+        Alert.alert("Success", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error joining or creating game:", error);
+      Alert.alert(
+        "Error",
+        error.response?.data?.detail ||
+          "An error occurred while trying to join or create the game."
+      );
     }
   };
 
@@ -55,18 +79,14 @@ const IndividualCourtScreen = ({navigation}) => {
         <Text style={styles.availabilityText}>{getAvailabilityText()}</Text>
         {availability === AVAILABILITY.LOOKING_FOR_PLAYERS && (
           <>
-            <Text>{`${numPlayers}/10 Spots Full`}</Text>
+            <Text>Current number of players: {playersCount}</Text>
             <Text>{`Players needed: ${10 - numPlayers}`}</Text>
           </>
         )}
         <Button
-          title="Sign Up"
-          onPress={() => {
-            if (numPlayers < 10) {
-              setNumPlayers(numPlayers + 1);
-            }
-          }}
-          disabled={availability === AVAILABILITY.FULL}
+          title="Join Game"
+          onPress={() => joinOrCreateGame(courtId)} // Pass the court ID
+          disabled={playersCount >= 10} // Disable if the game is full
         />
       </View>
       <BackButton navigation={navigation} />
@@ -78,43 +98,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
   },
   infoContainer: {
     marginBottom: 20,
   },
   title: {
     fontSize: 22,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
   },
   address: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
   },
   mapImage: {
     height: 200,
-    width: '100%',
-    resizeMode: 'stretch',
+    width: "100%",
+    resizeMode: "stretch",
     marginBottom: 20,
   },
   availabilityContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 10,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 5,
   },
   availabilityText: {
     marginBottom: 10,
     fontSize: 18,
-    fontWeight: 'bold',
-    color: availability =>
+    fontWeight: "bold",
+    color: (availability) =>
       availability === AVAILABILITY.AVAILABLE
-        ? 'green'
+        ? "green"
         : availability === AVAILABILITY.LOOKING_FOR_PLAYERS
-        ? 'orange'
-        : 'red',
+        ? "orange"
+        : "red",
   },
 });
 
