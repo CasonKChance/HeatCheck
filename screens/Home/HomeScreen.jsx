@@ -80,14 +80,14 @@ const HomeScreen = ({ navigation }) => {
       try {
         // Update the URL to match your Django server endpoint for fetching court data
         const response = await axios.get(
-          "http://localhost:8000/your-courts-endpoint/"
+          "http://localhost:8000/games/court-list/"
         );
 
         const fetchedCourts = response.data.map((court) => ({
           title: court.title,
           // Assume you have an images base URL and court_image is just the path
           image: {
-            uri: `http://localhost:8000/path-to-images/${court.court_image}`,
+            uri: `http://localhost:8000/assets/images/courts/${court.court_image}`,
           },
           address: court.address,
           availability: court.availability,
