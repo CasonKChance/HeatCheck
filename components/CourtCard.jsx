@@ -1,27 +1,35 @@
-import React from 'react';
-import styles from '../assets/stylesheets/CourtCardStyles.jsx';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React from "react";
+import styles from "../assets/stylesheets/CourtCardStyles.jsx";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
-const CourtCard = ({image, availability, title, address, navigation}) => {
+const CourtCard = ({
+  image,
+  availability,
+  title,
+  address,
+  currPlayersCount,
+  navigation,
+}) => {
   const onPress = () => {
-    navigation.navigate('Individual Court', {
+    navigation.navigate("Individual Court", {
       address,
       mapImage: image,
       name: title,
+      currPlayersCount: currPlayersCount,
     });
   };
 
   let availabilityTag;
 
-  if (availability === 'Available') {
+  if (availability === "Available") {
     availabilityTag = (
       <Text style={styles.courtAvailabilityGreen}>{availability}</Text>
     );
-  } else if (availability === 'Looking For Players') {
+  } else if (availability === "Looking For Players") {
     availabilityTag = (
       <Text style={styles.courtAvailabilityYellow}>{availability}</Text>
     );
-  } else if (availability === 'Full') {
+  } else if (availability === "Full") {
     availabilityTag = (
       <Text style={styles.courtAvailabilityRed}>{availability}</Text>
     );

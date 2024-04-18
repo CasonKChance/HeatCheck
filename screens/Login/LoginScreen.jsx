@@ -3,6 +3,7 @@ import BackgroundWrapperContainer from "../../components/wrappers/BackgroundWrap
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CommonActions } from "@react-navigation/native";
 import { useUserAuth } from "../../context/UserAuthContext";
+import { useUserData } from "../../context/UserDataContext";
 import {
   TouchableOpacity,
   View,
@@ -17,69 +18,113 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 const LoginScreen = ({ navigation }) => {
-  const { setIsUserAuth } = useUserAuth();
+  // const { setIsUserAuth } = useUserAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUserData } = useUserData();
 
-  useEffect(() => {
-    checkLoginState();
-  }, []);
+  // useEffect(() => {
+  //   checkLoginState();
+  // }, []);
 
-  const storeLoginState = async (token) => {
-    try {
-      await AsyncStorage.setItem("userToken", token); // Use 'true' or a session token as a value
-      setIsUserAuth(true);
-    } catch (error) {
-      console.error("AsyncStorage error: ", error.message);
+  // const storeLoginState = async (token) => {
+  //   try {
+  //     await AsyncStorage.setItem("userToken", token); // Use 'true' or a session token as a value
+  //     setIsUserAuth(true);
+  //   } catch (error) {
+  //     console.error("AsyncStorage error: ", error.message);
+  //   }
+  // };
+
+  // const checkLoginState = async () => {
+  //   try {
+  //     const token = await AsyncStorage.getItem("userToken");
+  //     if (token !== null) {
+  //       setIsUserAuth(true);
+  //       navigation.dispatch(CommonActions.navigate({ name: "Home" }));
+  //     }
+  //   } catch (error) {
+  //     console.error("AsyncStorage error: ", error.message);
+  //   }
+  // };
+
+  const navigateToHome = () => {
+    if (
+      email.toLowerCase() === "drew.verzino@gmail.com" &&
+      password === "Test1234!"
+    ) {
+      data = {
+        firstName: "Drew",
+        lastName: "Verzino",
+        emailAddress: "drew.verzino@gmail.com",
+        password: "Test1234!",
+        confirmPassword: "Test1234!",
+        position: "2",
+        hometown: "Tuscaloosa, AL",
+        skillLevel: "70-79",
+        height: `5'9"`,
+        weight: "170",
+        ageGroup: "18-25",
+        playType: "Shot Creating",
+      };
+      setUserData(data);
+      navigation.dispatch(CommonActions.navigate({ name: "Home" }));
+    } else if (
+      email.toLowerCase() === "casonkchance@gmail.com" &&
+      password === "Test1234!"
+    ) {
+      data = {
+        firstName: "Cason",
+        lastName: "Chance",
+        emailAddress: "casonkchance@gmail.com",
+        password: "Test1234!",
+        confirmPassword: "Test1234!",
+        position: "1",
+        hometown: "Athens, GA",
+        skillLevel: "70-79",
+        height: `6'1"`,
+        weight: "180",
+        ageGroup: "18-25",
+        playType: "Shot Creating",
+      };
+      setUserData(data);
+      navigation.dispatch(CommonActions.navigate({ name: "Home" }));
+    } else {
+      Alert.alert("Invalid Credentials");
     }
-  };
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:8000/users/login/",
+    //     {
+    //       email: email,
+    //       password: password,
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   );
 
-  const checkLoginState = async () => {
-    try {
-      const token = await AsyncStorage.getItem("userToken");
-      if (token !== null) {
-        setIsUserAuth(true);
-        navigation.dispatch(CommonActions.navigate({ name: "Home" }));
-      }
-    } catch (error) {
-      console.error("AsyncStorage error: ", error.message);
-    }
-  };
-
-  const navigateToHome = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/users/login/",
-        {
-          email: email,
-          password: password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      // If the server responds with a success status, proceed to the Home screen
-      if (response.status === 200 || response.status === 201) {
-        setIsUserAuth(true);
-        storeLoginState(response.data.token);
-        navigation.dispatch(CommonActions.navigate({ name: "Home" }));
-      } else {
-        // Handle unsuccessful login attempts here
-        Alert.alert(
-          "Login Failed",
-          "Please check your credentials and try again."
-        );
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      Alert.alert(
-        "Login Error",
-        "An error occurred during login. Please try again later."
-      );
-    }
+    //   // If the server responds with a success status, proceed to the Home screen
+    //   if (response.status === 200 || response.status === 201) {
+    //     setIsUserAuth(true);
+    //     storeLoginState(response.data.token);
+    //     navigation.dispatch(CommonActions.navigate({ name: "Home" }));
+    //   } else {
+    //     // Handle unsuccessful login attempts here
+    //     Alert.alert(
+    //       "Login Failed",
+    //       "Please check your credentials and try again."
+    //     );
+    //   }
+    // } catch (error) {
+    //   console.error("Login error:", error);
+    //   Alert.alert(
+    //     "Login Error",
+    //     "An error occurred during login. Please try again later."
+    //   );
+    // }
   };
   return (
     <BackgroundWrapperContainer>

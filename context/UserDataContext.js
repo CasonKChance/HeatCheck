@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const UserDataContext = createContext();
 
@@ -6,13 +6,13 @@ export const useUserData = () => {
   return useContext(UserDataContext);
 };
 
-export const UserDataProvider = ({children}) => {
+export const UserDataProvider = ({ children }) => {
   const [userData, setUserData] = useState({
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    password: '',
-    confirmPassword: '',
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    password: "",
+    confirmPassword: "",
     position: undefined,
     hometown: undefined,
     skillLevel: undefined,
@@ -22,8 +22,15 @@ export const UserDataProvider = ({children}) => {
     playType: undefined,
   });
 
+  const updateUserData = (field, value) => {
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [field]: value,
+    }));
+  };
+
   return (
-    <UserDataContext.Provider value={{userData, setUserData}}>
+    <UserDataContext.Provider value={{ userData, updateUserData }}>
       {children}
     </UserDataContext.Provider>
   );

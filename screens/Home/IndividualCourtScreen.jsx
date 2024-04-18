@@ -12,15 +12,21 @@ const AVAILABILITY = {
 
 const IndividualCourtScreen = ({ navigation }) => {
   const route = useRoute();
-  const { name, address, mapImage } = route.params;
-  const [numPlayers, setNumPlayers] = useState(0);
+  const { name, address, mapImage, currPlayersCount } = route.params;
+  const [numPlayers, setNumPlayers] = useState(currPlayersCount);
   const [availability, setAvailability] = useState(AVAILABILITY.AVAILABLE);
+  const [joined, setJoined] = useState(false);
+
+  useEffect(() => {
+    setNumPlayers(currPlayersCount);
+  }, [currPlayersCount]);
 
   useEffect(() => {
     const calculateAvailability = () => {
+      print(numPlayers);
       if (numPlayers === 10) {
         return AVAILABILITY.FULL;
-      } else if (numPlayers === 1) {
+      } else if (numPlayers >= 1) {
         return AVAILABILITY.LOOKING_FOR_PLAYERS;
       } else {
         return AVAILABILITY.AVAILABLE;
@@ -43,28 +49,42 @@ const IndividualCourtScreen = ({ navigation }) => {
     }
   };
 
-  const joinOrCreateGame = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/games/join-or-create-game/",
-        {
-          court_id: courtId,
-        }
-      );
-
-      if (response.status === 201) {
-        setPlayersCount(response.data.players_count);
-        Alert.alert("Success", response.data.message);
-      }
-    } catch (error) {
-      console.error("Error joining or creating game:", error);
-      Alert.alert(
-        "Error",
-        error.response?.data?.detail ||
-          "An error occurred while trying to join or create the game."
-      );
-    }
+  const joinOrCreateGame = () => {
+    setNumPlayers(numPlayers + 1);
+    setJoined(true);
   };
+
+  const leaveGame = () => {
+    setNumPlayers(numPlayers - 1);
+    setJoined(false);
+  };
+
+  // const joinOrCreateGame = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:8000/games/join-or-create-game/",
+  //       {
+  //         court_id: courtId,
+  //       }
+  //     );
+
+  //     if (response.status === 201) {
+  //       setPlayersCount(response.data.players_count);
+  //       Alert.alert("Success", response.data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error joining or creating game:", error);
+  //     Alert.alert(
+  //       "Error",
+  //       error.response?.data?.detail ||
+  //         "An error occurred while trying to join or create the game."
+  //     );
+  //   }
+  // };
+
+  if (!data) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
     <View style={styles.container}>
@@ -77,17 +97,24 @@ const IndividualCourtScreen = ({ navigation }) => {
 
       <View style={styles.availabilityContainer}>
         <Text style={styles.availabilityText}>{getAvailabilityText()}</Text>
-        {availability === AVAILABILITY.LOOKING_FOR_PLAYERS && (
+        {numPlayers > 0 && numPlayers < 10 && (
           <>
-            <Text>Current number of players: {playersCount}</Text>
+            <Text>Current number of players: {numPlayers}</Text>
             <Text>{`Players needed: ${10 - numPlayers}`}</Text>
           </>
         )}
-        <Button
-          title="Join Game"
-          onPress={() => joinOrCreateGame(courtId)} // Pass the court ID
-          disabled={playersCount >= 10} // Disable if the game is full
-        />
+        {!joined ? (
+          <Button
+            title="Join Game"
+            onPress={() => joinOrCreateGame()} // Pass the court ID
+            disabled={numPlayers >= 10} // Disable if the game is full
+          />
+        ) : (
+          <Button
+            title="Leave Game"
+            onPress={() => leaveGame()} // Pass the court ID
+          />
+        )}
       </View>
       <BackButton navigation={navigation} />
     </View>

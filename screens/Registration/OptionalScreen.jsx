@@ -20,53 +20,68 @@ import {
 } from "react-native";
 
 const OptionalScreen = ({ navigation }) => {
-  const { userData, setUserData } = useUserData();
-  const { setIsUserAuth } = useUserAuth();
+  const { userData, updateUserData } = useUserData();
+  //const { setIsUserAuth } = useUserAuth();
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
-  const navigateToHome = () => {
-    // Assuming you have the URL to your Django server endpoint
-    const url = "http://localhost:8000/users/register/";
-
-    // Setup the headers and data for your request.
-    // You might need to adjust this part based on your server setup.
-    const requestOptions = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const data = {
-      ...userData,
-      height: height,
-      weight: weight,
-    };
-
-    axios
-      .put(url, data, requestOptions)
-      .then((response) => {
-        // The request was successful
-
-        // Update userData before navigating
-        setUserData((currentData) => ({
-          ...currentData,
-          height: height,
-          weight: weight,
-        }));
-
-        setIsUserAuth(true);
-        navigation.dispatch(
-          CommonActions.navigate({
-            name: "HomeScreen",
-          })
-        );
-      })
-      .catch((error) => {
-        console.error("There was an error!", error.response);
-        // Handle errors here, such as by displaying a notification to the user
-      });
+  const handleHeightChange = (value) => {
+    setHeight(value);
+    updateUserData("height", value);
   };
+
+  const handleWeightChange = (value) => {
+    setWeight(value);
+    updateUserData("weight", value);
+  };
+
+  const navigateToHome = () => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: "Home",
+      })
+    );
+  };
+  // // Assuming you have the URL to your Django server endpoint
+  // const url = "http://localhost:8000/users/register/";
+
+  // // Setup the headers and data for your request.
+  // // You might need to adjust this part based on your server setup.
+  // const requestOptions = {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // };
+
+  // const data = {
+  //   ...userData,
+  //   height: height,
+  //   weight: weight,
+  // };
+
+  // axios
+  //   .put(url, data, requestOptions)
+  //   .then((response) => {
+  //     // The request was successful
+
+  //     // Update userData before navigating
+  //     setUserData((currentData) => ({
+  //       ...currentData,
+  //       height: height,
+  //       weight: weight,
+  //     }));
+
+  //     setIsUserAuth(true);
+  //     navigation.dispatch(
+  //       CommonActions.navigate({
+  //         name: "HomeScreen",
+  //       })
+  //     );
+  //   })
+  //   .catch((error) => {
+  //     console.error("There was an error!", error.response);
+  //     // Handle errors here, such as by displaying a notification to the user
+  //   });
 
   const renderPicker = (label, field, items) => {
     return (
@@ -80,11 +95,11 @@ const OptionalScreen = ({ navigation }) => {
               if (field === "height") {
                 // Validate and format height input
                 const formattedHeight = value ? formatHeightInput(value) : ""; // Format only if value is not empty
-                setHeight(formattedHeight);
+                handleHeightChange(formattedHeight);
               } else {
                 // Restrict weight input to numeric values only
                 const numericValue = value.replace(/[^0-9]/g, "");
-                setWeight(numericValue);
+                handleWeightChange(numericValue);
               }
             }}
             keyboardType="numeric"
@@ -95,10 +110,7 @@ const OptionalScreen = ({ navigation }) => {
           <View style={styles.pickerContainer}>
             <SelectList
               setSelected={(value) => {
-                setUserData((prevUserData) => ({
-                  ...prevUserData,
-                  [field]: value,
-                }));
+                updateUserData(field, value);
               }}
               data={items}
               save={items.value}

@@ -12,24 +12,28 @@ const Courts = [
     image: require("../../assets/images/MccamishCourt.png"),
     address: "965 Fowler St NW, Atlanta, GA 30318",
     availability: "Available",
+    currPlayersCount: 0,
   },
   {
     title: "State Farm Arena",
     image: require("../../assets/images/StateFarmArena.png"),
     address: "1 State Farm Dr, Atlanta, GA 30303",
     availability: "Available",
+    currPlayersCount: 0,
   },
   {
     title: "Georgia Tech CRC",
     image: require("../../assets/images/CRC.png"),
     address: "750 Ferst Dr, Atlanta, GA 30332",
     availability: "Looking For Players",
+    currPlayersCount: 9,
   },
   {
     title: "Peters Parking Deck",
     image: require("../../assets/images/Peters.png"),
     address: "741 Fowler St NW, Atlanta, GA 30332",
     availability: "Full",
+    currPlayersCount: 10,
   },
 ];
 const Markers = [
@@ -72,47 +76,47 @@ const Markers = [
 ];
 
 const HomeScreen = ({ navigation }) => {
-  const [courts, setCourts] = useState([]);
-  const [markers, setMarkers] = useState([]);
+  const [courts, setCourts] = useState(Courts);
+  const [markers, setMarkers] = useState(Markers);
 
-  useEffect(() => {
-    const fetchCourts = async () => {
-      try {
-        // Update the URL to match your Django server endpoint for fetching court data
-        const response = await axios.get(
-          "http://localhost:8000/games/court-list/"
-        );
+  // useEffect(() => {
+  //   const fetchCourts = async () => {
+  //     try {
+  //       // Update the URL to match your Django server endpoint for fetching court data
+  //       const response = await axios.get(
+  //         "http://localhost:8000/games/court-list/"
+  //       );
 
-        const fetchedCourts = response.data.map((court) => ({
-          title: court.title,
-          // Assume you have an images base URL and court_image is just the path
-          image: {
-            uri: `http://localhost:8000/assets/images/courts/${court.court_image}`,
-          },
-          address: court.address,
-          availability: court.availability,
-        }));
+  //       const fetchedCourts = response.data.map((court) => ({
+  //         title: court.title,
+  //         // Assume you have an images base URL and court_image is just the path
+  //         image: {
+  //           uri: `http://localhost:8000/assets/images/courts/${court.court_image}`,
+  //         },
+  //         address: court.address,
+  //         availability: court.availability,
+  //       }));
 
-        const fetchedMarkers = response.data.map((court) => ({
-          title: court.title,
-          latlng: {
-            latitude: court.latitude,
-            longitude: court.longitude,
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1,
-          },
-        }));
+  //       const fetchedMarkers = response.data.map((court) => ({
+  //         title: court.title,
+  //         latlng: {
+  //           latitude: court.latitude,
+  //           longitude: court.longitude,
+  //           latitudeDelta: 0.1,
+  //           longitudeDelta: 0.1,
+  //         },
+  //       }));
 
-        setCourts(fetchedCourts);
-        setMarkers(fetchedMarkers);
-      } catch (error) {
-        console.log(error);
-        Alert.alert("Error", "Could not fetch courts");
-      }
-    };
+  //       setCourts(fetchedCourts);
+  //       setMarkers(fetchedMarkers);
+  //     } catch (error) {
+  //       console.log(error);
+  //       Alert.alert("Error", "Could not fetch courts");
+  //     }
+  //   };
 
-    fetchCourts();
-  }, []);
+  //   fetchCourts();
+  // }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -153,6 +157,7 @@ const HomeScreen = ({ navigation }) => {
               address={court.address}
               availability={court.availability}
               navigation={navigation}
+              currPlayersCount={court.currPlayersCount}
             />
           ))}
         </ScrollView>
