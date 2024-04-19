@@ -82,10 +82,6 @@ const IndividualCourtScreen = ({ navigation }) => {
   //   }
   // };
 
-  if (!data) {
-    return <Text>Loading...</Text>;
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.infoContainer}>
